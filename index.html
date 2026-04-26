@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Tags Assertivas para Compartilhamento (WhatsApp, Insta, Face) -->
+    <title>Tudo On - Sistema de Vendas e Automação 24h</title>
+    <meta name="description" content="Transforme seu negócio em uma máquina automática. Venda via WhatsApp, Instagram e Site com estoque sincronizado. Sem taxas por venda!">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tudo On - O Sistema que Vende por Você 24h">
+    <meta property="og:description" content="Pare de perder vendas no WhatsApp. Tenha seu catálogo digital, controle de estoque e agendamentos no piloto automático. Clique e veja a demonstração!">
+    <!-- DICA: Troque o link abaixo pela URL oficial da sua logo quando hospedar o site -->
+    <meta property="og:image" content="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://tudoon.sistemas">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            500: '#0084ff', // Azul Tudo On
+                            600: '#0066cc', 
+                            900: '#001a33', 
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Script simples para o FAQ (Acordeão)
+        function toggleFAQ(id) {
+            const content = document.getElementById('faq-' + id);
+            const icon = document.getElementById('icon-' + id);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+    <style>
+        /* Animação do WhatsApp */
+        @keyframes pulse-wpp {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .wpp-float { animation: pulse-wpp 2s infinite; }
+        
+        /* Estilo para fundo texturizado discreto */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(0, 132, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Transição suave para o mockup do celular */
+        .mockup-transition {
+            transition: all 0.5s ease-in-out;
+        }
+
+        /* Efeito de brilho para botões de alta conversão */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-20deg);
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-brand-500 selection:text-white overflow-x-hidden">
+
+    <!-- Header Elegante -->
+    <header class="fixed w-full bg-white/80 backdrop-blur-lg z-50 border-b border-slate-200 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo Tudo On -->
+            <div class="font-black text-3xl tracking-tight italic flex items-center cursor-pointer">
+                <span class="text-slate-900">Tudo</span>
+                <span class="text-brand-500 ml-1 flex items-center drop-shadow-md">
+                    <i class="fa-solid fa-power-off text-[0.85em] mr-0.5"></i>n
+                </span>
+            </div>
+            
+            <!-- Navegação Desktop -->
+            <nav class="hidden md:flex gap-8 items-center font-medium text-sm text-slate-600">
+                <a href="#beneficios" class="hover:text-brand-500 transition-colors">Funcionalidades</a>
+                <a href="#para-quem" class="hover:text-brand-500 transition-colors">Para quem é?</a>
+                <a href="#planos" class="hover:text-brand-500 transition-colors">Planos</a>
+                <a href="#faq" class="hover:text-brand-500 transition-colors">FAQ</a>
+            </nav>
+
+            <a href="https://wa.me/5584921466248?text=Oi!%20Gostaria%20de%20testar%20o%20sistema%20Tudo%20On." target="_blank" class="hidden sm:inline-flex bg-brand-500 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-brand-600 transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 transform hover:-translate-y-0.5">
+                Testar Agora
+            </a>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION (Agressiva e Animada) -->
+    <section class="pt-36 pb-24 px-4 relative overflow-hidden bg-grid-pattern">
+        <!-- Elementos de fundo em desfoque -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-brand-500/20 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+            
+            <!-- Copy -->
+            <div class="lg:w-1/2 space-y-8 text-center lg:text-left z-10">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-brand-500/20 text-brand-600 text-sm font-bold shadow-sm">
+                    <span class="relative flex h-2.5 w-2.5">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-500"></span>
+                    </span>
+                    O Sistema Inteligente que Vende Tudo!
+                </div>
+                
+                <h1 class="text-5xl lg:text-6xl font-black text-slate-900 leading-[1.1] tracking-tight">
+                    Transforme seu negócio em uma <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-blue-400">máquina automática.</span>
+                </h1>
+                
+                <p class="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    Não importa o seu segmento: O <strong>Tudo On</strong> gerencia seu catálogo, recebe agendamentos e pedidos 24h por dia e controla seu estoque sem você precisar mover um dedo.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+                    <a href="https://wa.me/5584921466248?text=Oi!%20Vim%20pelo%20site.%20Quero%20ver%20como%20o%20Tudo%20On%20funciona%20na%20prática!" target="_blank" class="bg-brand-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-600 transition-all shadow-[0_8px_30px_rgb(0,132,255,0.3)] hover:shadow-[0_8px_40px_rgb(0,132,255,0.4)] flex items-center justify-center gap-3 transform hover:-translate-y-1 btn-shine">
+                        Ver Sistema na Prática <i class="fa-solid fa-arrow-right animate-pulse"></i>
+                    </a>
+                </div>
+                
+                <div class="flex items-center justify-center lg:justify-start gap-4 pt-4 text-sm text-slate-500 font-medium">
+                    <div class="flex -space-x-2">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?img=1" alt="User">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?img=5" alt="User">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?img=3" alt="User">
+                    </div>
+                    <p>Junte-se a <strong>+500 lojistas e clínicas</strong> que já estão ON.</p>
+                </div>
+            </div>
+
+            <!-- Visual (Mockup Avançado - Animado via JS) -->
+            <div class="lg:w-1/2 w-full relative h-[550px] flex justify-center items-center perspective-1000">
+                <!-- Dashboard de fundo -->
+                <div class="absolute right-0 top-10 w-[80%] h-80 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden opacity-90 transform rotate-2 translate-x-4 hidden md:block">
+                    <div class="h-10 bg-slate-50 border-b border-slate-100 flex items-center px-4 gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="h-6 w-32 bg-slate-200 rounded"></div>
+                            <div class="h-8 w-24 bg-brand-500/20 rounded-full"></div>
+                        </div>
+                        <div class="flex gap-4 mb-4">
+                            <div class="flex-1 h-24 bg-slate-50 rounded-xl border border-slate-100 p-4">
+                                <div class="text-xs text-slate-400 mb-2">Vendas/Agendamentos</div>
+                                <div id="dash-value" class="text-xl font-bold text-slate-800 transition-all">R$ 2.450,00</div>
+                            </div>
+                            <div class="flex-1 h-24 bg-slate-50 rounded-xl border border-slate-100 p-4">
+                                <div class="text-xs text-slate-400 mb-2">Novos Pedidos</div>
+                                <div class="text-xl font-bold text-brand-500">18</div>
+                            </div>
+                        </div>
+                        <div class="h-20 w-full bg-slate-100 rounded-xl"></div>
+                    </div>
+                </div>
+
+                <!-- Celular Frontal Animado (Catálogo/App) -->
+                <div class="relative w-[280px] h-[520px] bg-slate-900 rounded-[2.5rem] shadow-2xl border-[6px] border-slate-800 overflow-hidden z-20 animate-float">
+                    <!-- Notch -->
+                    <div class="absolute top-0 inset-x-0 h-6 bg-slate-800 rounded-b-xl w-32 mx-auto z-30"></div>
+                    <!-- Tela -->
+                    <div class="absolute inset-0 bg-slate-50 flex flex-col pt-8">
+                        <!-- Topo Colorido Dinâmico -->
+                        <div id="mock-header" class="bg-brand-500 text-white p-5 rounded-b-3xl shadow-sm mockup-transition">
+                            <div id="mock-title" class="font-bold text-lg mb-1">Loja de Eletrônicos</div>
+                            <div class="text-xs text-white/90"><i class="fa-solid fa-circle text-green-400 text-[8px] mr-1"></i> <span id="mock-status">Aberto e recebendo pedidos</span></div>
+                        </div>
+                        <div class="flex-1 p-4 overflow-y-auto space-y-4 no-scrollbar">
+                            <!-- Item 1 -->
+                            <div class="bg-white p-3 rounded-xl shadow-sm flex gap-3 items-center mockup-transition">
+                                <div id="mock-img1" class="w-16 h-16 bg-slate-200 rounded-lg flex-shrink-0 bg-cover mockup-transition" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=200');"></div>
+                                <div class="w-full">
+                                    <h4 id="mock-item1" class="font-bold text-slate-800 text-sm leading-tight">Smartwatch Pro</h4>
+                                    <p id="mock-price1" class="text-brand-500 font-bold mt-1">R$ 199,90</p>
+                                </div>
+                                <button class="ml-auto w-8 h-8 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="bg-white p-3 rounded-xl shadow-sm flex gap-3 items-center mockup-transition">
+                                <div id="mock-img2" class="w-16 h-16 bg-slate-200 rounded-lg flex-shrink-0 bg-cover mockup-transition" style="background-image: url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=200');"></div>
+                                <div class="w-full">
+                                    <h4 id="mock-item2" class="font-bold text-slate-800 text-sm leading-tight">Fone Bluetooth X</h4>
+                                    <p id="mock-price2" class="text-brand-500 font-bold mt-1">R$ 89,90</p>
+                                </div>
+                                <button class="ml-auto w-8 h-8 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <!-- Botão Dinâmico -->
+                        <div class="p-4 bg-white border-t border-slate-100">
+                            <div id="mock-btn" class="w-full bg-brand-500 text-white text-center py-3 rounded-xl font-bold text-sm mockup-transition">Ver Carrinho (2)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notificação flutuante -->
+                <div class="absolute bottom-20 left-0 md:-left-12 bg-white p-3 rounded-xl shadow-xl z-30 flex items-center gap-3 border border-slate-100 animate-bounce">
+                    <div class="w-10 h-10 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-lg"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">Nova notificação!</p>
+                        <p id="mock-notify" class="text-sm font-bold text-slate-900">Pedido Confirmado</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOGOS DE CONFIANÇA -->
+    <section class="py-8 border-y border-slate-200 bg-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm font-semibold text-slate-400 mb-6 uppercase tracking-wider">Perfeito para negócios que operam via:</p>
+            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-60 grayscale">
+                <i class="fa-brands fa-whatsapp text-4xl hover:grayscale-0 hover:text-green-500 transition-all cursor-pointer"></i>
+                <i class="fa-brands fa-instagram text-4xl hover:grayscale-0 hover:text-pink-500 transition-all cursor-pointer"></i>
+                <i class="fa-brands fa-facebook text-4xl hover:grayscale-0 hover:text-blue-600 transition-all cursor-pointer"></i>
+                <i class="fa-brands fa-tiktok text-4xl hover:grayscale-0 hover:text-black transition-all cursor-pointer"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. O PROBLEMA (A Dor) -->
+    <section class="py-24 bg-slate-900 text-white relative">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Você é escravo do próprio celular?</h2>
+                <p class="text-slate-400 text-xl">Se você precisa estar acordado e com o celular na mão para sua loja ou clínica faturar, você não tem um negócio, tem um emprego cansativo.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700/50 hover:border-brand-500/50 transition-all group">
+                    <div class="w-14 h-14 bg-red-500/10 rounded-xl flex items-center justify-center text-red-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Atendimento Lento</h3>
+                    <p class="text-slate-400 leading-relaxed">Clientes odeiam esperar. Enquanto você demora para passar o cardápio, agenda ou catálogo, o concorrente já vendeu.</p>
+                </div>
+                <div class="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700/50 hover:border-brand-500/50 transition-all group relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-14 h-14 bg-yellow-500/10 rounded-xl flex items-center justify-center text-yellow-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Confusão e Furos</h3>
+                    <p class="text-slate-400 leading-relaxed">Vender produto sem estoque, agendar dois clientes no mesmo horário... Erros manuais que causam dores de cabeça.</p>
+                </div>
+                <div class="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700/50 hover:border-brand-500/50 transition-all group">
+                    <div class="w-14 h-14 bg-orange-500/10 rounded-xl flex items-center justify-center text-orange-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Tempo Perdido</h3>
+                    <p class="text-slate-400 leading-relaxed">Somar pedidos, conferir comprovante de PIX, encaixar horário... Seu tempo vale muito para fazer trabalho de robô.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SOLUÇÃO (Benefícios) -->
+    <section id="beneficios" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="text-brand-500 font-bold uppercase tracking-wider text-sm">A Solução Definitiva</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-4 mb-6">Tudo On: Seu funcionário do mês. Todo mês.</h2>
+                <p class="text-slate-600 text-xl">Um ecossistema poderoso, preparado para escalar hamburguerias, clínicas, barbearias ou lojas de roupa. Tudo em um só lugar.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Feature 1 -->
+                <div class="group p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-xl hover:-translate-y-2 hover:border-brand-500/30 transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 text-brand-500/5 text-9xl group-hover:rotate-12 transition-transform duration-500"><i class="fa-solid fa-store"></i></div>
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-brand-500 text-3xl mb-6 relative z-10 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <h4 class="font-bold text-xl text-slate-900 mb-3 relative z-10">Catálogo ou Menu</h4>
+                    <p class="text-slate-600 relative z-10">Site lindo com a sua cara. O cliente navega, escolhe e compra sozinho, ou agenda o serviço direto do celular.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="group p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-xl hover:-translate-y-2 hover:border-brand-500/30 transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 text-brand-500/5 text-9xl group-hover:rotate-12 transition-transform duration-500"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-brand-500 text-3xl mb-6 relative z-10 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h4 class="font-bold text-xl text-slate-900 mb-3 relative z-10">Estoque/Agenda Online</h4>
+                    <p class="text-slate-600 relative z-10">Vendeu? Deu baixa. Agendou? Bloqueou o horário. Sem mais planilhas ou caderninhos furados de papel.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="group p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-xl hover:-translate-y-2 hover:border-brand-500/30 transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 text-brand-500/5 text-9xl group-hover:rotate-12 transition-transform duration-500"><i class="fa-brands fa-whatsapp"></i></div>
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-brand-500 text-3xl mb-6 relative z-10 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h4 class="font-bold text-xl text-slate-900 mb-3 relative z-10">Integração WhatsApp</h4>
+                    <p class="text-slate-600 relative z-10">O pedido ou o agendamento chega lindo e organizado no seu zap. Zero confusão, só as informações exatas.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="group p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-xl hover:-translate-y-2 hover:border-brand-500/30 transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 text-brand-500/5 text-9xl group-hover:rotate-12 transition-transform duration-500"><i class="fa-solid fa-chart-pie"></i></div>
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-brand-500 text-3xl mb-6 relative z-10 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <h4 class="font-bold text-xl text-slate-900 mb-3 relative z-10">Dashboard de Gestão</h4>
+                    <p class="text-slate-600 relative z-10">Tenha clareza. Saiba faturamento do dia, clientes cadastrados e muito mais, tudo num painel fácil.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="https://wa.me/5584921466248?text=Oi!%20Quero%20saber%20mais%20sobre%20as%20funcionalidades%20do%20Tudo%20On." target="_blank" class="inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-3 rounded-full font-bold hover:bg-slate-800 transition-colors">
+                    Falar com Consultor <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. QUEM PRECISA? (Segmentação Completa) -->
+    <section id="para-quem" class="py-24 bg-slate-100 border-y border-slate-200 relative overflow-hidden">
+        <!-- Ícones Decorativos Flutuantes -->
+        <div class="absolute top-10 left-10 text-brand-500/5 text-9xl animate-float"><i class="fa-solid fa-shapes"></i></div>
+        <div class="absolute bottom-10 right-10 text-brand-500/5 text-9xl animate-float" style="animation-delay: 2s;"><i class="fa-solid fa-layer-group"></i></div>
+
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-500/10 text-brand-600 text-sm font-bold shadow-sm mb-4">
+                    <i class="fa-solid fa-crosshairs"></i> Top Nichos de Sucesso
+                </span>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">A ferramenta certa para <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-blue-400">quem quer vender.</span></h2>
+                <p class="text-slate-600 text-xl">Focamos nos mercados que mais crescem. Selecione seu segmento e veja como a nossa tecnologia escala o seu negócio.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Nicho 1: Celulares -->
+                <a href="https://wa.me/5584921466248?text=Oi!%20Tenho%20uma%20Loja%20de%20Celular/Assistência%20e%20quero%20ver%20um%20modelo%20do%20Tudo%20On." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-brand-500/30 transition-all duration-500 hover:-translate-y-2 block">
+                    <img src="https://images.unsplash.com/photo-1588508065123-287b28e01390?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Lojas e Assistências de Celular">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+                        <div class="w-14 h-14 bg-blue-500 text-white rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-lg transform group-hover:-translate-y-2 group-hover:scale-110 transition-all duration-300">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-2xl mb-2">Lojas & Assistências</h4>
+                        <div class="overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">
+                            <div class="flex flex-wrap gap-2 mb-4 mt-2">
+                                <span class="bg-white/20 text-white text-xs uppercase font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm"><i class="fa-solid fa-tags"></i> Catálogo</span>
+                                <span class="bg-white/20 text-white text-xs uppercase font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm"><i class="fa-solid fa-screwdriver-wrench"></i> Serviços</span>
+                            </div>
+                            <div class="text-blue-400 font-bold text-sm flex items-center gap-2">Ver Modelo <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Nicho 2: Barbearias -->
+                <a href="https://wa.me/5584921466248?text=Oi!%20Tenho%20uma%20Barbearia/Salão%20e%20quero%20ver%20um%20modelo%20do%20Tudo%20On." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-brand-500/30 transition-all duration-500 hover:-translate-y-2 block">
+                    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Barbearia">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+                        <div class="w-14 h-14 bg-slate-700 text-white rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-lg transform group-hover:-translate-y-2 group-hover:scale-110 transition-all duration-300">
+                            <i class="fa-solid fa-scissors"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-2xl mb-2">Barbearias & Salões</h4>
+                        <div class="overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">
+                            <div class="flex flex-wrap gap-2 mb-4 mt-2">
+                                <span class="bg-white/20 text-white text-xs uppercase font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm"><i class="fa-solid fa-calendar-check"></i> Agenda Online</span>
+                                <span class="bg-white/20 text-white text-xs uppercase font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm"><i class="fa-solid fa-bell"></i> Lembretes</span>
+                            </div>
+                            <div class="text-slate-300 font-bold text-sm flex items-center gap-2">Ver Modelo <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Nicho 3: Delivery -->
+                <a href="https://wa.me/5584921466248?text=Oi!%20Meu%20nicho%20é%20Hamburgueria/Delivery%20e%20quero%20ver%20um%20modelo." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-brand-500/30 transition-all duration-500 hover:-translate-y-2 block">
+                    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Hamburgueria">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+                        <div class="w-14 h-14 bg-orange-500 text-white rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-lg transform group-hover:-translate-y-2 group-hover:scale-110 transition-all duration-300">
+                            <i class="fa-solid fa-burger"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-2xl mb-2">Food & Delivery</h4>
+                        <div class="overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">
+                            <div class="flex flex-wrap gap-2 mb-4 mt-2">
+                                <span class="bg-white/20 text-white text-xs uppercase font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm"><i class="fa-solid fa-motorcycle"></i> Pedidos</span>
+                                <span class="bg-white/20 text-white text-xs uppercase font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm"><i class="fa-solid fa-qrcode"></i> Cardápio QR</span>
+                            </div>
+                            <div class="text-orange-400 font-bold text-sm flex items-center gap-2">Ver Modelo <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Nicho 4: Roupas -->
+                <a href="https://wa.me/5584921466248?text=Oi!%20Tenho%20uma%20Loja%20de%20Roupas%20e%20quero%20ver%20um%20modelo%20do%20Tudo%20On." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-brand-500/30 transition-all duration-500 hover:-translate-y-2 block">
+                    <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Roupas">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+                        <div class="w-14 h-14 bg-pink-500 text-white rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-lg transform group-hover:-translate-y-2 group-hover:scale-110 transition-all duration-300">
+                            <i class="fa-solid fa-shirt"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-2xl mb-2">Lojas de Roupas</h4>
+                        <div class="overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">
+                            <div class="flex flex-wrap gap-2 mb-4 mt-2">
+                                <span class="bg-white/20 text-white text-xs uppercase font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm"><i class="fa-solid fa-tags"></i> Variações</span>
+                                <span class="bg-white/20 text-white text-xs uppercase font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm"><i class="fa-solid fa-camera"></i> Vitrine Online</span>
+                            </div>
+                            <div class="text-pink-400 font-bold text-sm flex items-center gap-2">Ver Modelo <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Nicho 5: Clínicas -->
+                <a href="https://wa.me/5584921466248?text=Oi!%20Minha%20área%20é%20Clínica/Estética%20e%20quero%20ver%20um%20modelo%20do%20Tudo%20On." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-brand-500/30 transition-all duration-500 hover:-translate-y-2 block">
+                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Estética">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+                        <div class="w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-lg transform group-hover:-translate-y-2 group-hover:scale-110 transition-all duration-300">
+                            <i class="fa-solid fa-spa"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-2xl mb-2">Clínicas & Estética</h4>
+                        <div class="overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">
+                            <div class="flex flex-wrap gap-2 mb-4 mt-2">
+                                <span class="bg-white/20 text-white text-xs uppercase font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm"><i class="fa-solid fa-clipboard-user"></i> Agendamentos</span>
+                                <span class="bg-white/20 text-white text-xs uppercase font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm"><i class="fa-solid fa-clock"></i> Horários</span>
+                            </div>
+                            <div class="text-emerald-400 font-bold text-sm flex items-center gap-2">Ver Modelo <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Nicho 6: Semijoias -->
+                <a href="https://wa.me/5584921466248?text=Oi!%20Vendo%20Semijoias/Acessórios%20e%20quero%20ver%20um%20modelo%20do%20Tudo%20On." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-brand-500/30 transition-all duration-500 hover:-translate-y-2 block">
+                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Semijoias">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end text-left">
+                        <div class="w-14 h-14 bg-purple-500 text-white rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-lg transform group-hover:-translate-y-2 group-hover:scale-110 transition-all duration-300">
+                            <i class="fa-solid fa-gem"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-2xl mb-2">Semijoias & Joias</h4>
+                        <div class="overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">
+                            <div class="flex flex-wrap gap-2 mb-4 mt-2">
+                                <span class="bg-white/20 text-white text-xs uppercase font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm"><i class="fa-solid fa-camera-retro"></i> Álbum de Peças</span>
+                                <span class="bg-white/20 text-white text-xs uppercase font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm"><i class="fa-brands fa-whatsapp"></i> Venda Rápida</span>
+                            </div>
+                            <div class="text-purple-400 font-bold text-sm flex items-center gap-2">Ver Modelo <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="mt-12 text-center relative z-10">
+                <a href="https://wa.me/5584921466248?text=Oi!%20Meu%20nicho%20é%20[ESCREVA_AQUI]%20e%20quero%20saber%20se%20o%20Tudo%20On%20serve%20pra%20mim." target="_blank" class="inline-flex items-center justify-center gap-3 bg-white text-slate-800 px-8 py-4 rounded-full font-bold shadow-[0_8px_30px_rgb(0,0,0,0.05)] hover:shadow-[0_8px_40px_rgb(0,132,255,0.2)] hover:-translate-y-1 hover:border-brand-500 transition-all border border-slate-200">
+                    <div class="w-8 h-8 rounded-full bg-brand-500/10 text-brand-500 flex items-center justify-center"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    Não achou o seu? Fale com um especialista
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. OFERTA / PREÇO (Ancoragem e Conversão) -->
+    <section id="planos" class="py-24 bg-slate-900 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-extrabold text-white mb-4">Pronto para colocar sua empresa no automático?</h2>
+                <p class="text-slate-400 text-lg">Sem taxas escondidas. Sem comissão por venda. Apenas tecnologia de ponta trabalhando para você.</p>
+            </div>
+
+            <!-- Card de Oferta Principal -->
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-[0_0_50px_rgba(0,132,255,0.2)] border-2 border-brand-500 max-w-2xl mx-auto relative transform hover:scale-[1.02] transition-transform">
+                <!-- Badge de Garantia -->
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-2 rounded-full font-bold text-sm border border-slate-700 flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-brand-500"></i> Risco Zero
+                </div>
+
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-black text-slate-900">Implantação Completa</h3>
+                    <p class="text-slate-500 mt-2">Nossa equipe configura tudo de acordo com o seu nicho.</p>
+                </div>
+
+                <div class="space-y-4 mb-10">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-brand-500 text-xl"></i>
+                        <span class="text-slate-700 font-medium">Catálogo, Menu ou Agenda Digital Personalizada</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-brand-500 text-xl"></i>
+                        <span class="text-slate-700 font-medium">Painel Administrativo para Gestão</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-brand-500 text-xl"></i>
+                        <span class="text-slate-700 font-medium">Controle de Estoque e Finanças</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-brand-500 text-xl"></i>
+                        <span class="text-slate-700 font-medium">Integração Direta com WhatsApp</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-brand-500 text-xl"></i>
+                        <span class="text-slate-700 font-medium">Suporte Técnico Exclusivo</span>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5584921466248?text=Gostei%20muito!%20Quero%20contratar%20o%20sistema%20Tudo%20On%20para%20minha%20empresa." target="_blank" class="w-full block text-center bg-brand-500 text-white py-5 rounded-2xl font-bold text-xl hover:bg-brand-600 transition-all shadow-xl shadow-brand-500/20 btn-shine">
+                    Garantir Minha Vaga Agora <i class="fa-solid fa-rocket ml-2 animate-bounce"></i>
+                </a>
+                
+                <p class="text-center text-sm text-slate-500 mt-6 font-medium">
+                    <i class="fa-solid fa-lock text-slate-400 mr-1"></i> Transação 100% segura. Pagamento via Pix ou Cartão.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FAQ (Quebra de Objeções) -->
+    <section id="faq" class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-slate-900 text-center mb-12">Dúvidas Frequentes</h2>
+            
+            <div class="space-y-4">
+                <!-- Pergunta 1 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                    <button onclick="toggleFAQ(1)" class="w-full px-6 py-5 text-left flex justify-between items-center font-bold text-slate-800 focus:outline-none">
+                        <span>Eu não entendo de tecnologia. Consigo usar?</span>
+                        <i id="icon-1" class="fa-solid fa-chevron-down text-brand-500 transition-transform"></i>
+                    </button>
+                    <div id="faq-1" class="px-6 pb-5 text-slate-600 hidden">
+                        Com certeza! O Tudo On foi desenhado para ser tão simples quanto usar o WhatsApp ou Instagram. Além disso, nós entregamos o sistema configurado e damos treinamento.
+                    </div>
+                </div>
+                <!-- Pergunta 2 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                    <button onclick="toggleFAQ(2)" class="w-full px-6 py-5 text-left flex justify-between items-center font-bold text-slate-800 focus:outline-none">
+                        <span>Vocês cobram comissão por venda ou agendamento?</span>
+                        <i id="icon-2" class="fa-solid fa-chevron-down text-brand-500 transition-transform"></i>
+                    </button>
+                    <div id="faq-2" class="px-6 pb-5 text-slate-600 hidden">
+                        Não! Nós somos uma empresa de tecnologia, não um marketplace como o iFood. O dinheiro do seu cliente vai direto pra você, 100% livre de taxas da nossa parte.
+                    </div>
+                </div>
+                <!-- Pergunta 3 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                    <button onclick="toggleFAQ(3)" class="w-full px-6 py-5 text-left flex justify-between items-center font-bold text-slate-800 focus:outline-none">
+                        <span>Serve para minha Barbearia / Clínica?</span>
+                        <i id="icon-3" class="fa-solid fa-chevron-down text-brand-500 transition-transform"></i>
+                    </button>
+                    <div id="faq-3" class="px-6 pb-5 text-slate-600 hidden">
+                        Sim! Nosso sistema possui um módulo exclusivo de agendamentos. O cliente vê os horários disponíveis, escolhe o profissional e reserva direto pelo site.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <p class="text-slate-600">Ainda tem dúvidas?</p>
+                <a href="https://wa.me/5584921466248?text=Oi!%20Li%20o%20site%20mas%20fiquei%20com%20algumas%20dúvidas%20sobre%20o%20Tudo%20On." target="_blank" class="inline-block mt-2 font-bold text-brand-500 hover:text-brand-600">Chame no WhatsApp <i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Completo & Atualizado -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="font-black text-2xl tracking-tight italic flex items-center mb-4">
+                    <span class="text-white">Tudo</span>
+                    <span class="text-brand-500 ml-1 flex items-center">
+                        <i class="fa-solid fa-power-off text-[0.85em] mr-0.5"></i>n
+                    </span>
+                </div>
+                <p class="text-sm max-w-sm">A solução definitiva para negócios que querem automatizar vendas, agendamentos e escalar com inteligência em qualquer nicho.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Links Rápidos</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#beneficios" class="hover:text-brand-500 transition-colors">Funcionalidades</a></li>
+                    <li><a href="#para-quem" class="hover:text-brand-500 transition-colors">Nichos Atendidos</a></li>
+                    <li><a href="#planos" class="hover:text-brand-500 transition-colors">Planos e Preços</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Contato Direto</h4>
+                <ul class="space-y-4 text-sm">
+                    <li>
+                        <a href="https://wa.me/5584921466248?text=Oi!%20Gostaria%20de%20falar%20com%20o%20atendimento." target="_blank" class="flex items-center gap-3 hover:text-white transition-colors">
+                            <div class="w-8 h-8 rounded-full bg-green-500/20 text-green-500 flex items-center justify-center"><i class="fa-brands fa-whatsapp"></i></div>
+                            (84) 92146-6248
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/tudoon.sistemas/" target="_blank" class="flex items-center gap-3 hover:text-white transition-colors">
+                            <div class="w-8 h-8 rounded-full bg-pink-500/20 text-pink-500 flex items-center justify-center"><i class="fa-brands fa-instagram"></i></div>
+                            @tudoon.sistemas
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-sm text-center md:text-left">&copy; 2024 Tudo On Sistemas.<br>Todos os direitos reservados.</p>
+            
+            <!-- Créditos Criativos -->
+            <div class="text-sm">
+                Desenvolvido por <a href="https://www.instagram.com/gilneicreative/" target="_blank" class="text-brand-500 font-bold hover:text-white transition-colors">Gilnei Creative</a>
+            </div>
+
+            <div class="flex gap-4 text-sm">
+                <!-- Botões secundários apontando para o zap de suporte -->
+                <a href="https://wa.me/5584921466248?text=Oi!%20Gostaria%20de%20ler%20os%20Termos%20de%20Uso." target="_blank" class="hover:text-white transition-colors">Termos de Uso</a>
+                <a href="https://wa.me/5584921466248?text=Oi!%20Gostaria%20de%20ler%20a%20Política%20de%20Privacidade." target="_blank" class="hover:text-white transition-colors">Privacidade</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5584921466248?text=Oi!%20Estou%20no%20site%20Tudo%20On%20e%20preciso%20de%20ajuda." target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-[0_4px_20px_rgba(37,211,102,0.4)] z-50 hover:bg-[#20bd5a] transition-all hover:scale-110 wpp-float group">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="absolute right-20 bg-white text-slate-800 text-sm font-bold py-2 px-4 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+            Atendimento Rápido
+        </span>
+    </a>
+
+    <!-- SCRIPT DA ANIMAÇÃO DO MOCKUP (MÁGICA ACONTECE AQUI) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mockups = [
+                {
+                    title: "Loja de Eletrônicos", status: "Aberto e recebendo pedidos", headerColor: "bg-brand-500",
+                    img1: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=200", item1: "Smartwatch Pro", price1: "R$ 199,90",
+                    img2: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=200", item2: "Fone Bluetooth X", price2: "R$ 89,90",
+                    btnText: "Ver Carrinho (2)", btnColor: "bg-brand-500", notifyText: "R$ 289,80 Confirmado", dashVal: "R$ 2.450,00"
+                },
+                {
+                    title: "Sua Hamburgueria", status: "Cozinha a todo vapor", headerColor: "bg-orange-600",
+                    img1: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=200", item1: "Smash Burger Duplo", price1: "R$ 34,90",
+                    img2: "https://images.unsplash.com/photo-1576107232684-1279f390859f?q=80&w=200", item2: "Fritas com Cheddar", price2: "R$ 18,90",
+                    btnText: "Finalizar Pedido", btnColor: "bg-orange-600", notifyText: "Novo Pedido de Delivery!", dashVal: "42 Pedidos Hoje"
+                },
+                {
+                    title: "Sua Barbearia", status: "Agenda Disponível", headerColor: "bg-slate-900",
+                    img1: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=200", item1: "Corte Navalhado", price1: "R$ 45,00",
+                    img2: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=200", item2: "Barba + Toalha Quente", price2: "R$ 35,00",
+                    btnText: "Confirmar Horário", btnColor: "bg-slate-900", notifyText: "Agendamento às 15:00", dashVal: "Agenda Lotada"
+                },
+                {
+                    title: "Clínica de Estética", status: "Agendamento Online", headerColor: "bg-emerald-500",
+                    img1: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=200", item1: "Limpeza de Pele Profunda", price1: "R$ 120,00",
+                    img2: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=200", item2: "Massagem Relaxante", price2: "R$ 90,00",
+                    btnText: "Reservar Sessão", btnColor: "bg-emerald-500", notifyText: "Nova Cliente Agendada", dashVal: "R$ 1.800,00 Recebido"
+                }
+            ];
+
+            let index = 0;
+            
+            setInterval(() => {
+                index = (index + 1) % mockups.length;
+                const data = mockups[index];
+
+                // Header
+                document.getElementById('mock-header').className = `${data.headerColor} text-white p-5 rounded-b-3xl shadow-sm mockup-transition`;
+                document.getElementById('mock-title').innerText = data.title;
+                document.getElementById('mock-status').innerText = data.status;
+                
+                // Item 1
+                document.getElementById('mock-img1').style.backgroundImage = `url('${data.img1}')`;
+                document.getElementById('mock-item1').innerText = data.item1;
+                document.getElementById('mock-price1').innerText = data.price1;
+                
+                // Item 2
+                document.getElementById('mock-img2').style.backgroundImage = `url('${data.img2}')`;
+                document.getElementById('mock-item2').innerText = data.item2;
+                document.getElementById('mock-price2').innerText = data.price2;
+
+                // Button & Notif
+                document.getElementById('mock-btn').className = `w-full ${data.btnColor} text-white text-center py-3 rounded-xl font-bold text-sm mockup-transition`;
+                document.getElementById('mock-btn').innerText = data.btnText;
+                document.getElementById('mock-notify').innerText = data.notifyText;
+                document.getElementById('dash-value').innerText = data.dashVal;
+
+            }, 3500); // Muda a cada 3.5 segundos
+        });
+    </script>
+
+</body>
+</html>
