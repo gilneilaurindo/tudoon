@@ -1003,8 +1003,6 @@
             params.append('estado', state);
             params.append('duracao', duracaoSegundos);
 
-            const requestUrl = SCRIPT_URL + '?' + params.toString();
-
             // FUNÇÃO QUE MOSTRA O FEEDBACK E VAI PRO VERCEL
             let jaRedirecionou = false;
             const mostrarSucessoEVaiParaVercel = () => {
@@ -1025,10 +1023,14 @@
             // TRAVA DE SEGURANÇA MÁXIMA: Se a net oscilar (> 3s), não para o funil!
             setTimeout(mostrarSucessoEVaiParaVercel, 3000);
 
-            // ENVIO PARA O GOOGLE (Método GET infalível)
-            fetch(requestUrl, {
-                method: 'GET',
-                mode: 'no-cors'
+            // ENVIO PARA O GOOGLE (Método POST blindado contra cache e falhas de URL)
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: params.toString()
             }).then(() => {
                 mostrarSucessoEVaiParaVercel(); 
             }).catch((error) => {
