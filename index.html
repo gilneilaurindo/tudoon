@@ -950,13 +950,12 @@
             const duracaoMs = performance.now();
             const duracaoSegundos = Math.floor(duracaoMs / 1000) + 's'; 
             
-            // PREPARAÇÃO BLINDADA DE DADOS PARA O GOOGLE (JSON via text/plain para não bater no CORS)
-            const payload = JSON.stringify({
-                nome: name,
-                telefone: phone,
-                email: email,
-                duracao: duracaoSegundos
-            });
+            // PREPARAÇÃO BLINDADA DE DADOS PARA O GOOGLE (URLSearchParams evita falhas no e.parameter do Apps Script)
+            const payload = new URLSearchParams();
+            payload.append('nome', name);
+            payload.append('telefone', phone);
+            payload.append('email', email);
+            payload.append('duracao', duracaoSegundos);
 
             // FUNÇÃO QUE MOSTRA O FEEDBACK E VAI PRO VERCEL
             let jaRedirecionou = false;
@@ -978,14 +977,11 @@
             // TRAVA DE SEGURANÇA MÁXIMA: Se a net oscilar (> 3s), não para o funil!
             setTimeout(mostrarSucessoEVaiParaVercel, 3000);
 
-            // ENVIO PARA O GOOGLE (Blindado contra erros de CORS)
+            // ENVIO PARA O GOOGLE (Blindado contra erros de CORS e parsing)
             fetch(SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'text/plain;charset=utf-8' // Disfarçado de texto para o navegador deixar passar
-                },
-                body: payload 
+                body: payload // Envia como application/x-www-form-urlencoded nativamente, perfeitamente legível para a Planilha
             }).then(() => {
                 mostrarSucessoEVaiParaVercel(); 
             }).catch((error) => {
