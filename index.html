@@ -994,7 +994,7 @@
             const duracaoMs = performance.now();
             const duracaoSegundos = Math.floor(duracaoMs / 1000) + 's'; 
             
-            // PREPARAÇÃO INFALÍVEL: Formulário URL Encoded Clássico (100% à prova de falhas)
+            // PREPARAÇÃO INFALÍVEL: Enviar via GET na URL
             const params = new URLSearchParams();
             params.append('nome', name);
             params.append('telefone', phone);
@@ -1002,6 +1002,8 @@
             params.append('cidade', city);
             params.append('estado', state);
             params.append('duracao', duracaoSegundos);
+
+            const requestUrl = SCRIPT_URL + '?' + params.toString();
 
             // FUNÇÃO QUE MOSTRA O FEEDBACK E VAI PRO VERCEL
             let jaRedirecionou = false;
@@ -1023,14 +1025,10 @@
             // TRAVA DE SEGURANÇA MÁXIMA: Se a net oscilar (> 3s), não para o funil!
             setTimeout(mostrarSucessoEVaiParaVercel, 3000);
 
-            // ENVIO PARA O GOOGLE (Padrão mais compatível com Apps Script)
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: params.toString()
+            // ENVIO PARA O GOOGLE (Método GET infalível)
+            fetch(requestUrl, {
+                method: 'GET',
+                mode: 'no-cors'
             }).then(() => {
                 mostrarSucessoEVaiParaVercel(); 
             }).catch((error) => {
