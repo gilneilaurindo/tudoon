@@ -950,12 +950,9 @@
             const duracaoMs = performance.now();
             const duracaoSegundos = Math.floor(duracaoMs / 1000) + 's'; 
             
-            // PREPARAÇÃO BLINDADA DE DADOS PARA O GOOGLE (URLSearchParams evita falhas no e.parameter do Apps Script)
-            const payload = new URLSearchParams();
-            payload.append('nome', name);
-            payload.append('telefone', phone);
-            payload.append('email', email);
-            payload.append('duracao', duracaoSegundos);
+            // PREPARAÇÃO INFALÍVEL: FormData (O formato nativo que o Google nunca falha em ler)
+            const formData = new FormData(document.getElementById('leadForm'));
+            formData.append('duracao', duracaoSegundos);
 
             // FUNÇÃO QUE MOSTRA O FEEDBACK E VAI PRO VERCEL
             let jaRedirecionou = false;
@@ -977,11 +974,11 @@
             // TRAVA DE SEGURANÇA MÁXIMA: Se a net oscilar (> 3s), não para o funil!
             setTimeout(mostrarSucessoEVaiParaVercel, 3000);
 
-            // ENVIO PARA O GOOGLE (Blindado contra erros de CORS e parsing)
+            // ENVIO PARA O GOOGLE (Usando FormData, o Google processa como se fosse um formulário HTML padrão)
             fetch(SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                body: payload // Envia como application/x-www-form-urlencoded nativamente, perfeitamente legível para a Planilha
+                body: formData
             }).then(() => {
                 mostrarSucessoEVaiParaVercel(); 
             }).catch((error) => {
