@@ -950,9 +950,12 @@
             const duracaoMs = performance.now();
             const duracaoSegundos = Math.floor(duracaoMs / 1000) + 's'; 
             
-            // PREPARAÇÃO INFALÍVEL: FormData (O formato nativo que o Google nunca falha em ler)
-            const formData = new FormData(document.getElementById('leadForm'));
-            formData.append('duracao', duracaoSegundos);
+            // PREPARAÇÃO INFALÍVEL: Formulário URL Encoded Clássico (100% à prova de falhas)
+            const params = new URLSearchParams();
+            params.append('nome', name);
+            params.append('telefone', phone);
+            params.append('email', email);
+            params.append('duracao', duracaoSegundos);
 
             // FUNÇÃO QUE MOSTRA O FEEDBACK E VAI PRO VERCEL
             let jaRedirecionou = false;
@@ -974,11 +977,14 @@
             // TRAVA DE SEGURANÇA MÁXIMA: Se a net oscilar (> 3s), não para o funil!
             setTimeout(mostrarSucessoEVaiParaVercel, 3000);
 
-            // ENVIO PARA O GOOGLE (Usando FormData, o Google processa como se fosse um formulário HTML padrão)
+            // ENVIO PARA O GOOGLE (Padrão mais compatível com Apps Script)
             fetch(SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: params.toString()
             }).then(() => {
                 mostrarSucessoEVaiParaVercel(); 
             }).catch((error) => {
