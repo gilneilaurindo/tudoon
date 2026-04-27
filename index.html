@@ -183,7 +183,7 @@
                             </h3>
                             <p class="text-sm text-slate-500 font-medium">Preencha rapidamente para acessar a sua demonstração prática. Descubra como a sua empresa pode vender no piloto automático.</p>
                         </div>
-
+                        
                         <form id="leadForm" class="flex flex-col gap-3">
                             <!-- Nome -->
                             <div class="relative">
@@ -967,8 +967,8 @@
         }
         window.addEventListener('scroll', revealOnScroll);
 
-        // --- 3. MÁGICA DA CAPTURA DE LEAD PARA A PLANILHA E REDIRECIONAMENTO ---
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyZLP28GnUBzxTKJUeVvLoj-Wh1e5BgUvFF_25JpBSGgIPVPz7Ya2L2nQa3HLV1W2w6/exec'; 
+        // --- 3. MÁGICA DA CAPTURA DE LEAD PARA A PLANILHA (VIA JSON API REST) ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwiL3o__yINe1zaamKIoaXi9w89nJKx86CVAfwrxEC0z62rRWAHQp69AQzZANk4z1VM/exec'; 
 
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -978,9 +978,6 @@
             const email = document.getElementById('userEmail').value;
             const city = document.getElementById('userCity').value;
             const state = document.getElementById('userState').value;
-            
-            // DIAGNÓSTICO: Mostra no painel F12 os dados exatos que o site vai enviar
-            console.log("🚀 Enviando dados para o Google:", { nome: name, telefone: phone, email: email, cidade: city, estado: state });
             
             const formContainer = document.getElementById('formContainer');
             const feedbackBox = document.getElementById('successFeedback');
@@ -994,14 +991,16 @@
             const duracaoMs = performance.now();
             const duracaoSegundos = Math.floor(duracaoMs / 1000) + 's'; 
             
-            // PREPARAÇÃO INFALÍVEL: Enviar via GET na URL
-            const params = new URLSearchParams();
-            params.append('nome', name);
-            params.append('telefone', phone);
-            params.append('email', email);
-            params.append('cidade', city);
-            params.append('estado', state);
-            params.append('duracao', duracaoSegundos);
+            // PREPARAÇÃO ASSERTIVA JSON: Exatamente como o backend está esperando!
+            const payload = {
+                action: "salvar_lead", // Rota que definimos no Apps Script
+                nome: name,
+                telefone: phone,
+                email: email,
+                cidade: city,
+                estado: state,
+                duracao: duracaoSegundos
+            };
 
             // FUNÇÃO QUE MOSTRA O FEEDBACK E VAI PRO VERCEL
             let jaRedirecionou = false;
@@ -1020,16 +1019,19 @@
                 }, 2500);
             };
 
-            // TRAVA DE SEGURANÇA MÁXIMA: Se a net oscilar (> 3s), não para o funil!
+            // TRAVA DE SEGURANÇA MÁXIMA: Redireciona independente de resposta da API
             setTimeout(mostrarSucessoEVaiParaVercel, 3000);
 
-            // ENVIO PARA O GOOGLE (Método GET infalível via URL)
-            const requestUrl = SCRIPT_URL + '?' + params.toString();
-            
-            fetch(requestUrl, {
-                method: 'GET',
-                mode: 'no-cors'
-            }).then(() => {
+            // ENVIO PARA O GOOGLE VIA JSON (Bypass de Preflight de CORS com text/plain)
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8'
+                },
+                body: JSON.stringify(payload)
+            }).then(response => response.json())
+              .then(data => {
+                console.log("Resposta da API:", data);
                 mostrarSucessoEVaiParaVercel(); 
             }).catch((error) => {
                 console.error('Erro silencioso:', error);
