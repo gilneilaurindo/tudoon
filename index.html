@@ -43,7 +43,6 @@
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'loading-bar': 'loading 2s ease-in-out forwards',
                         'bounce-x': 'bounce-x 2s infinite',
-                        'scroll-carousel': 'scroll-carousel 40s linear infinite',
                     },
                     keyframes: {
                         float: {
@@ -58,10 +57,6 @@
                         'bounce-x': {
                             '0%, 100%': { transform: 'translateX(0)' },
                             '50%': { transform: 'translateX(8px)' },
-                        },
-                        'scroll-carousel': {
-                            '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(calc(-50% - 1rem))' },
                         }
                     }
                 }
@@ -101,9 +96,6 @@
             transform: skewX(-20deg); animation: shine 3s infinite;
         }
         @keyframes shine { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
-
-        /* Pausar carrossel ao passar o mouse */
-        .carousel-track:hover { animation-play-state: paused; }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-brand-500 selection:text-white overflow-x-hidden">
@@ -189,28 +181,28 @@
                             <h3 class="text-xl font-black text-slate-900 flex items-center gap-2 mb-1">
                                 Veja o Sistema em Ação
                             </h3>
-                            <p class="text-sm text-slate-500 font-medium">Preencha rapidamente para liberar a sua demonstração prática. Descubra como a sua empresa pode vender no piloto automático.</p>
+                            <p class="text-sm text-slate-500 font-medium">Preencha rapidamente para acessar a sua demonstração prática. Descubra como a sua empresa pode vender no piloto automático.</p>
                         </div>
 
                         <form id="leadForm" class="flex flex-col gap-3">
                             <!-- Nome -->
                             <div class="relative">
                                 <i class="fa-solid fa-user absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
-                                <input type="text" id="userName" required placeholder="Qual o seu nome?" class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white focus:outline-none text-slate-800 font-bold transition-all shadow-inner text-sm">
+                                <input type="text" id="userName" name="nome" required placeholder="Qual o seu nome?" class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white focus:outline-none text-slate-800 font-bold transition-all shadow-inner text-sm">
                             </div>
                             <!-- WhatsApp -->
                             <div class="relative">
                                 <i class="fa-brands fa-whatsapp absolute left-4 top-1/2 transform -translate-y-1/2 text-green-500 text-lg"></i>
-                                <input type="tel" id="userPhone" required placeholder="Seu melhor WhatsApp" class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white focus:outline-none text-slate-800 font-bold transition-all shadow-inner text-sm">
+                                <input type="tel" id="userPhone" name="telefone" required placeholder="Seu melhor WhatsApp" class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white focus:outline-none text-slate-800 font-bold transition-all shadow-inner text-sm">
                             </div>
                             <!-- Email -->
                             <div class="relative">
                                 <i class="fa-solid fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
-                                <input type="email" id="userEmail" required autocomplete="email" placeholder="Seu E-mail" class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white focus:outline-none text-slate-800 font-bold transition-all shadow-inner text-sm">
+                                <input type="email" id="userEmail" name="email" required autocomplete="email" placeholder="Seu E-mail" class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white focus:outline-none text-slate-800 font-bold transition-all shadow-inner text-sm">
                             </div>
 
                             <button type="submit" id="submitBtn" class="w-full mt-2 bg-brand-500 text-white px-8 py-4 rounded-xl font-black text-lg hover:bg-brand-600 transition-all shadow-[0_8px_20px_rgb(0,132,255,0.3)] flex items-center justify-center gap-2 btn-shine transform hover:-translate-y-1">
-                                Liberar Minha Demonstração <i class="fa-solid fa-arrow-right animate-bounce-x"></i>
+                                Acessar Sistema de Teste <i class="fa-solid fa-arrow-right animate-bounce-x"></i>
                             </button>
                         </form>
                     </div>
@@ -467,25 +459,29 @@
         </div>
     </section>
 
-    <!-- NOVO: CARROSSEL DE DEPOIMENTOS (Prova Social Animada) -->
+    <!-- NOVO: CARROSSEL DE DEPOIMENTOS (Interativo com Scroll e Zoom) -->
     <section id="depoimentos" class="py-24 bg-slate-900 overflow-hidden relative">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 mb-16 relative z-10">
             <div class="text-center reveal">
-                <span class="text-brand-400 font-black tracking-widest uppercase text-sm border border-brand-500/30 px-5 py-2 rounded-full mb-4 inline-flex items-center gap-2 bg-brand-500/10"><i class="fa-solid fa-star"></i> Resultados Reais</span>
+                <!-- Etiqueta Premium Assertiva e Iluminada -->
+                <span class="text-white font-black uppercase text-sm px-6 py-2.5 rounded-full mb-4 inline-flex items-center gap-2 bg-brand-500 shadow-[0_0_15px_rgba(0,132,255,0.5)] border border-brand-400">
+                    <i class="fa-solid fa-star text-yellow-300"></i> Resultados Reais
+                </span>
                 <h2 class="text-4xl md:text-5xl font-black text-white mt-4">Lojistas que já viraram o jogo.</h2>
+                <p class="text-slate-400 mt-4 font-medium text-lg">Passe o rato ou arraste para ler as histórias de quem já automatizou o seu negócio.</p>
             </div>
         </div>
 
-        <!-- Pista do Carrossel (Animação de Scroll Contínuo) -->
-        <div class="relative w-full overflow-hidden flex z-10 carousel-container before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-slate-900 before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-slate-900 after:to-transparent">
-            <!-- Dobramos os itens para o scroll infinito funcionar suavemente -->
-            <div class="flex gap-6 animate-scroll-carousel carousel-track w-max px-4">
+        <!-- Pista do Carrossel Interativa (Arrastar & Zoom) -->
+        <div class="relative w-full overflow-hidden z-10 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-slate-900 before:to-transparent before:pointer-events-none after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-slate-900 after:to-transparent after:pointer-events-none">
+            
+            <div id="depoimentos-track" class="flex gap-6 overflow-x-auto no-scrollbar px-10 pb-12 pt-4 cursor-grab items-stretch w-full scroll-smooth">
                 
                 <!-- Depoimento 1 -->
-                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0">
+                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0 transform transition-all duration-300 hover:scale-105 hover:bg-slate-700 hover:border-brand-500 hover:shadow-[0_15px_30px_rgba(0,132,255,0.2)] hover:z-20 select-none">
                     <div class="flex items-center gap-4 mb-6">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500 pointer-events-none">
                         <div>
                             <h4 class="text-white font-bold text-lg">Carlos Eduardo</h4>
                             <p class="text-brand-400 text-xs font-bold uppercase tracking-wider">Barbearia VIP</p>
@@ -498,9 +494,9 @@
                 </div>
 
                 <!-- Depoimento 2 -->
-                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0">
+                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0 transform transition-all duration-300 hover:scale-105 hover:bg-slate-700 hover:border-brand-500 hover:shadow-[0_15px_30px_rgba(0,132,255,0.2)] hover:z-20 select-none">
                     <div class="flex items-center gap-4 mb-6">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500 pointer-events-none">
                         <div>
                             <h4 class="text-white font-bold text-lg">Mariana Silva</h4>
                             <p class="text-brand-400 text-xs font-bold uppercase tracking-wider">Loja de Roupas</p>
@@ -513,9 +509,9 @@
                 </div>
 
                 <!-- Depoimento 3 -->
-                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0">
+                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0 transform transition-all duration-300 hover:scale-105 hover:bg-slate-700 hover:border-brand-500 hover:shadow-[0_15px_30px_rgba(0,132,255,0.2)] hover:z-20 select-none">
                     <div class="flex items-center gap-4 mb-6">
-                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500">
+                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500 pointer-events-none">
                         <div>
                             <h4 class="text-white font-bold text-lg">Ricardo Gomes</h4>
                             <p class="text-brand-400 text-xs font-bold uppercase tracking-wider">Hamburgueria e Delivery</p>
@@ -528,9 +524,9 @@
                 </div>
 
                 <!-- Depoimento 4 -->
-                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0">
+                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0 transform transition-all duration-300 hover:scale-105 hover:bg-slate-700 hover:border-brand-500 hover:shadow-[0_15px_30px_rgba(0,132,255,0.2)] hover:z-20 select-none">
                     <div class="flex items-center gap-4 mb-6">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500 pointer-events-none">
                         <div>
                             <h4 class="text-white font-bold text-lg">Dra. Amanda Luz</h4>
                             <p class="text-brand-400 text-xs font-bold uppercase tracking-wider">Clínica de Estética</p>
@@ -542,11 +538,25 @@
                     <p class="text-slate-300 font-medium leading-relaxed">"Os lembretes automáticos no WhatsApp acabaram com as faltas dos meus pacientes. Eles agendam sozinhos e o sistema cuida de lembrar. Perfeito!"</p>
                 </div>
 
-                <!-- DUPLICAÇÃO DOS ITENS (Para efeito infinito suave) -->
-                <!-- Depoimento 1 Duplicado -->
-                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0">
+                <!-- Depoimento 5 (Provedor) -->
+                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0 transform transition-all duration-300 hover:scale-105 hover:bg-slate-700 hover:border-brand-500 hover:shadow-[0_15px_30px_rgba(0,132,255,0.2)] hover:z-20 select-none">
                     <div class="flex items-center gap-4 mb-6">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500 pointer-events-none">
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Fernando Costa</h4>
+                            <p class="text-brand-400 text-xs font-bold uppercase tracking-wider">Telecom & Provedor</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-1 text-yellow-400 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 font-medium leading-relaxed">"Poder separar os planos por cidade e automatizar a cobrança poupou-me o trabalho de contratar mais dois assistentes. A plataforma é incrível."</p>
+                </div>
+
+                <!-- Duplicação invisível para o loop infinito funcionar com JS -->
+                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0 transform transition-all duration-300 hover:scale-105 hover:bg-slate-700 hover:border-brand-500 hover:shadow-[0_15px_30px_rgba(0,132,255,0.2)] hover:z-20 select-none">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500 pointer-events-none">
                         <div>
                             <h4 class="text-white font-bold text-lg">Carlos Eduardo</h4>
                             <p class="text-brand-400 text-xs font-bold uppercase tracking-wider">Barbearia VIP</p>
@@ -556,51 +566,6 @@
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
                     <p class="text-slate-300 font-medium leading-relaxed">"A Fila de Espera Inteligente salvou minha agenda. Quando alguém desmarca, o sistema avisa o próximo automaticamente. Não perco mais nenhum horário!"</p>
-                </div>
-
-                <!-- Depoimento 2 Duplicado -->
-                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0">
-                    <div class="flex items-center gap-4 mb-6">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500">
-                        <div>
-                            <h4 class="text-white font-bold text-lg">Mariana Silva</h4>
-                            <p class="text-brand-400 text-xs font-bold uppercase tracking-wider">Loja de Roupas</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-1 text-yellow-400 text-sm mb-4">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="text-slate-300 font-medium leading-relaxed">"Antes eu passava horas respondendo no WhatsApp. Hoje acordo e já tenho pedidos pagos com baixa no estoque. O Tudo On foi o melhor investimento do ano."</p>
-                </div>
-
-                <!-- Depoimento 3 Duplicado -->
-                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0">
-                    <div class="flex items-center gap-4 mb-6">
-                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500">
-                        <div>
-                            <h4 class="text-white font-bold text-lg">Ricardo Gomes</h4>
-                            <p class="text-brand-400 text-xs font-bold uppercase tracking-wider">Hamburgueria e Delivery</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-1 text-yellow-400 text-sm mb-4">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="text-slate-300 font-medium leading-relaxed">"Fugimos das taxas abusivas dos aplicativos. Nosso cardápio digital recebe pedidos direto no nosso zap, organizadinho e já com o frete calculado. Surreal."</p>
-                </div>
-
-                <!-- Depoimento 4 Duplicado -->
-                <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0">
-                    <div class="flex items-center gap-4 mb-6">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500">
-                        <div>
-                            <h4 class="text-white font-bold text-lg">Dra. Amanda Luz</h4>
-                            <p class="text-brand-400 text-xs font-bold uppercase tracking-wider">Clínica de Estética</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-1 text-yellow-400 text-sm mb-4">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="text-slate-300 font-medium leading-relaxed">"Os lembretes automáticos no WhatsApp acabaram com as faltas dos meus pacientes. Eles agendam sozinhos e o sistema cuida de lembrar. Perfeito!"</p>
                 </div>
             </div>
         </div>
@@ -961,7 +926,7 @@
         window.addEventListener('scroll', revealOnScroll);
 
         // --- 3. MÁGICA DA CAPTURA DE LEAD PARA A PLANILHA E REDIRECIONAMENTO ---
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw9H6joTjvbytbZRQw15uqUm2drH-_Sf-DpJJfruuPAYvmbjHwXZoO4xQxgSetcRKI6/exec'; 
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyskkXuEnr0Y7iMyFRnPZLfr-80xCHYsUtSOklctxU4VQL5YXORXMs5S-UHL0e1KZ_k/exec'; 
 
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -1099,6 +1064,56 @@
 
             }, 4000); // Muda a cada 4 segundos
         });
+
+        // --- 6. CARROSSEL DE DEPOIMENTOS ARRASTÁVEL E AUTOMÁTICO ---
+        const track = document.getElementById('depoimentos-track');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let isHovering = false;
+
+        // Eventos de Mouse (Arrastar)
+        track.addEventListener('mousedown', (e) => {
+            isDown = true;
+            track.classList.add('cursor-grabbing');
+            track.classList.remove('cursor-grab');
+            startX = e.pageX - track.offsetLeft;
+            scrollLeft = track.scrollLeft;
+        });
+        track.addEventListener('mouseleave', () => {
+            isDown = false;
+            track.classList.remove('cursor-grabbing');
+            track.classList.add('cursor-grab');
+            isHovering = false;
+        });
+        track.addEventListener('mouseup', () => {
+            isDown = false;
+            track.classList.remove('cursor-grabbing');
+            track.classList.add('cursor-grab');
+        });
+        track.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - track.offsetLeft;
+            const walk = (x - startX) * 2; // Velocidade do arrasto
+            track.scrollLeft = scrollLeft - walk;
+        });
+
+        // Pausar auto-scroll ao passar o rato ou tocar
+        track.addEventListener('mouseenter', () => isHovering = true);
+        track.addEventListener('touchstart', () => isHovering = true, {passive: true});
+        track.addEventListener('touchend', () => { setTimeout(() => isHovering = false, 2000) }, {passive: true});
+
+        // Loop Automático do Carrossel
+        setInterval(() => {
+            if (!isHovering && !isDown) {
+                track.scrollLeft += 1.5; // Velocidade do auto-scroll
+                // Voltar ao início sem que o cliente note (efeito infinito)
+                if (track.scrollLeft >= (track.scrollWidth - track.clientWidth - 5)) {
+                    track.scrollLeft = 0;
+                }
+            }
+        }, 30);
     </script>
 
 </body>
