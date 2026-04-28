@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Meta Tags Assertivas para Compartilhamento -->
     <title>Tudo On - A Máquina de Vendas e Agendamentos</title>
     <meta name="description" content="O seu concorrente já automatizou. O Tudo On fecha vendas, controla estoque, agenda clientes e gerencia filas de espera 24h por dia.">
     <meta property="og:type" content="website">
@@ -12,10 +11,8 @@
     <meta property="og:description" content="Pare de perder vendas e horários. Tenha seu catálogo digital, fila de espera inteligente e lembretes no piloto automático. Libere seu acesso!">
     <meta property="og:image" content="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80">
     
-    <!-- Favicon (Ícone na Aba do Navegador) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22><path fill=%22%230084ff%22 d=%22M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 177.7 16 248c0 110.5 89.5 200 200 200s200-89.5 200-200c0-70.3-33.7-132.6-86.5-176.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 131.4c0 82.8-67.2 150-150 150s-150-67.2-150-150c0-50.4 24.6-99.1 63.5-131.4z%22/></svg>">
 
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q85V9GPNWR"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -24,7 +21,6 @@
       gtag('config', 'G-Q85V9GPNWR');
     </script>
 
-    <!-- Tailwind CSS & FontAwesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -64,19 +60,15 @@
         }
     </script>
     <style>
-        /* Tela de Loading */
         #preloader { transition: opacity 0.8s ease-in-out, visibility 0.8s; }
         .loaded #preloader { opacity: 0; visibility: hidden; pointer-events: none; }
         
-        /* Animações de Scroll (Fade In Up) */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Ocultar barra de rolagem mas manter funcionalidade do scroll (Cross-browser) */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Animação do WhatsApp */
         @keyframes pulse-wpp {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
             70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
@@ -84,11 +76,9 @@
         }
         .wpp-float { animation: pulse-wpp 2s infinite; }
         
-        /* Estilo para fundo texturizado discreto */
         .bg-grid-pattern { background-image: radial-gradient(rgba(0, 132, 255, 0.1) 1px, transparent 1px); background-size: 30px 30px; }
         .mockup-transition { transition: all 0.5s ease-in-out; }
 
-        /* Efeito de brilho para botões de alta conversão */
         .btn-shine { position: relative; overflow: hidden; }
         .btn-shine::after {
             content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
@@ -96,13 +86,15 @@
             transform: skewX(-20deg); animation: shine 3s infinite;
         }
         @keyframes shine { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
+
+        .modal-open { overflow: hidden; }
+        .modal-active { opacity: 1 !important; visibility: visible !important; }
+        .modal-content-active { transform: scale(1) !important; }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-brand-500 selection:text-white overflow-x-hidden">
 
-    <!-- TELA DE INICIAÇÃO (PRELOADER) -->
     <div id="preloader" class="fixed inset-0 bg-slate-950 z-[99999] flex flex-col items-center justify-center">
-        <!-- Logo Corrigida no Preloader -->
         <div class="font-black text-6xl tracking-tight italic flex items-center mb-6 animate-pulse">
             <span class="text-white">Tudo</span>
             <span class="text-brand-500 ml-2 flex items-center drop-shadow-[0_0_20px_rgba(0,132,255,0.8)]">
@@ -115,10 +107,8 @@
         <p class="text-brand-500 text-sm mt-4 font-bold tracking-widest uppercase animate-pulse">Iniciando Ecossistema Inteligente...</p>
     </div>
 
-    <!-- Header Elegante -->
     <header class="fixed w-full bg-white/80 backdrop-blur-lg z-50 border-b border-slate-200 shadow-sm transition-all reveal">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Logo Corrigida no Header -->
             <div class="font-black text-3xl tracking-tight italic flex items-center cursor-pointer hover:scale-105 transition-transform" onclick="window.scrollTo(0,0)">
                 <span class="text-slate-900">Tudo</span>
                 <span class="text-brand-500 flex items-center ml-1.5 drop-shadow-md">
@@ -138,20 +128,16 @@
         </div>
     </header>
 
-    <!-- 1. HERO SECTION (Conversão Máxima & Mockup Duplo) -->
     <section class="pt-40 pb-24 px-4 relative overflow-hidden bg-grid-pattern min-h-screen flex items-center">
-        <!-- Ícones Flutuantes de Fundo -->
         <div class="absolute top-32 left-10 text-brand-500/10 text-6xl animate-float"><i class="fa-solid fa-chart-line"></i></div>
         <div class="absolute bottom-32 right-10 text-brand-500/10 text-8xl animate-float-slow"><i class="fa-solid fa-calendar-check"></i></div>
         <div class="absolute top-1/2 left-1/3 text-brand-500/5 text-9xl animate-pulse-slow"><i class="fa-solid fa-cart-shopping"></i></div>
         
-        <!-- Elementos de fundo Coloridos -->
         <div class="absolute top-20 left-10 w-72 h-72 bg-brand-500/20 rounded-full blur-3xl -z-10"></div>
         <div class="absolute bottom-10 right-10 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl -z-10"></div>
 
         <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 w-full">
             
-            <!-- COPY MATADORA E FORMULÁRIO DE EXPECTATIVA (Esquerda) -->
             <div class="lg:w-1/2 space-y-8 text-center lg:text-left z-20 reveal">
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-500/20 text-red-600 text-sm font-bold shadow-sm cursor-default hover:bg-red-100 transition-colors">
                     <span class="relative flex h-2.5 w-2.5">
@@ -169,13 +155,11 @@
                     Lojas, Clínicas, Barbearias e Telecom: O <strong>Tudo On</strong> filtra vendas por cidade, cuida de pagamentos inteligentes e gerencia horários <span class="text-slate-900 font-bold bg-brand-500/10 px-2 py-1 rounded-md ml-1 border border-brand-500/20"><i class="fa-solid fa-clock text-brand-500 mr-1"></i>24h por dia.</span>
                 </p>
                 
-                <!-- FORMULÁRIO ESTRATÉGICO (Gera Expectativa antes de dar o Teste) -->
                 <div class="bg-white p-6 rounded-[2rem] shadow-2xl border-2 border-brand-500/20 max-w-lg mx-auto lg:mx-0 relative z-30 transform hover:scale-[1.02] transition-transform">
                     <div class="absolute -top-4 -right-4 bg-brand-500 text-white text-[10px] font-black uppercase px-4 py-1.5 rounded-full shadow-lg animate-bounce flex items-center gap-1 border border-brand-400">
                         <i class="fa-solid fa-star text-yellow-300 text-xs"></i> Convite VIP
                     </div>
                     
-                    <!-- Conteúdo Visível do Formulário -->
                     <div id="formContainer">
                         <div class="mb-5">
                             <h3 class="text-xl font-black text-slate-900 flex items-center gap-2 mb-1">
@@ -183,61 +167,38 @@
                             </h3>
                             <p class="text-sm text-slate-500 font-medium">Preencha rapidamente para acessar a sua demonstração prática. Descubra como a sua empresa pode vender no piloto automático.</p>
                         </div>
-                        
+
                         <form id="leadForm" class="flex flex-col gap-3">
-                            <!-- Nome -->
                             <div class="relative">
                                 <i class="fa-solid fa-user absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
                                 <input type="text" id="userName" name="nome" required placeholder="Qual o seu nome?" class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white focus:outline-none text-slate-800 font-bold transition-all shadow-inner text-sm">
                             </div>
-                            <!-- WhatsApp -->
                             <div class="relative">
                                 <i class="fa-brands fa-whatsapp absolute left-4 top-1/2 transform -translate-y-1/2 text-green-500 text-lg"></i>
                                 <input type="tel" id="userPhone" name="telefone" required placeholder="Seu melhor WhatsApp" class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white focus:outline-none text-slate-800 font-bold transition-all shadow-inner text-sm">
                             </div>
-                            <!-- Email -->
                             <div class="relative">
                                 <i class="fa-solid fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
                                 <input type="email" id="userEmail" name="email" required autocomplete="email" placeholder="Seu E-mail" class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white focus:outline-none text-slate-800 font-bold transition-all shadow-inner text-sm">
                             </div>
 
                             <div class="flex gap-3">
-                                <!-- Cidade -->
                                 <div class="relative w-2/3">
                                     <i class="fa-solid fa-city absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
                                     <input type="text" id="userCity" name="cidade" required placeholder="Sua Cidade" class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white focus:outline-none text-slate-800 font-bold transition-all shadow-inner text-sm">
                                 </div>
-                                <!-- Estado -->
                                 <div class="relative w-1/3">
                                     <select id="userState" name="estado" required class="w-full pl-4 pr-8 py-3.5 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white focus:outline-none text-slate-800 font-bold transition-all shadow-inner text-sm appearance-none">
                                         <option value="" disabled selected>UF</option>
-                                        <option value="AC">AC</option>
-                                        <option value="AL">AL</option>
-                                        <option value="AP">AP</option>
-                                        <option value="AM">AM</option>
-                                        <option value="BA">BA</option>
-                                        <option value="CE">CE</option>
-                                        <option value="DF">DF</option>
-                                        <option value="ES">ES</option>
-                                        <option value="GO">GO</option>
-                                        <option value="MA">MA</option>
-                                        <option value="MT">MT</option>
-                                        <option value="MS">MS</option>
-                                        <option value="MG">MG</option>
-                                        <option value="PA">PA</option>
-                                        <option value="PB">PB</option>
-                                        <option value="PR">PR</option>
-                                        <option value="PE">PE</option>
-                                        <option value="PI">PI</option>
-                                        <option value="RJ">RJ</option>
-                                        <option value="RN">RN</option>
-                                        <option value="RS">RS</option>
-                                        <option value="RO">RO</option>
-                                        <option value="RR">RR</option>
-                                        <option value="SC">SC</option>
-                                        <option value="SP">SP</option>
-                                        <option value="SE">SE</option>
-                                        <option value="TO">TO</option>
+                                        <option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option>
+                                        <option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option>
+                                        <option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option>
+                                        <option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option>
+                                        <option value="MG">MG</option><option value="PA">PA</option><option value="PB">PB</option>
+                                        <option value="PR">PR</option><option value="PE">PE</option><option value="PI">PI</option>
+                                        <option value="RJ">RJ</option><option value="RN">RN</option><option value="RS">RS</option>
+                                        <option value="RO">RO</option><option value="RR">RR</option><option value="SC">SC</option>
+                                        <option value="SP">SP</option><option value="SE">SE</option><option value="TO">TO</option>
                                     </select>
                                     <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
                                 </div>
@@ -249,7 +210,6 @@
                         </form>
                     </div>
 
-                    <!-- Feedback Visual de Sucesso (Fica oculto até enviar) -->
                     <div id="successFeedback" class="hidden flex-col items-center justify-center py-8 px-4 text-center">
                         <div class="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center text-4xl mb-4 shadow-[0_0_30px_rgba(34,197,94,0.4)] animate-pulse">
                             <i class="fa-solid fa-check"></i>
@@ -264,16 +224,10 @@
                 </div>
             </div>
 
-            <!-- VISUAL: NOTEBOOK E CELULAR ANIMADOS (Direita) -->
             <div class="lg:w-1/2 w-full relative h-[500px] md:h-[600px] flex justify-center items-center perspective-1000 reveal">
-                
-                <!-- MOCKUP DO NOTEBOOK (Fundo) -->
                 <div class="absolute right-[0%] md:right-[-10%] top-[5%] md:top-[15%] w-[320px] md:w-[500px] z-10 animate-float-slow opacity-90 hidden sm:block">
-                    <!-- Tela do Notebook -->
                     <div class="relative bg-slate-900 p-2 md:p-3 rounded-t-2xl md:rounded-t-3xl border-[3px] border-slate-800 shadow-2xl aspect-[16/10] overflow-hidden flex flex-col">
-                        <!-- Câmera -->
                         <div class="absolute top-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-slate-700 rounded-full"></div>
-                        <!-- UI do Painel -->
                         <div class="flex-1 bg-slate-50 rounded-lg overflow-hidden mt-1 flex flex-col">
                             <div class="h-6 bg-white border-b border-slate-200 flex items-center px-3">
                                 <div class="font-bold text-[10px] text-slate-800"><i class="fa-solid fa-chart-pie text-brand-500 mr-1"></i> Dashboard Inteligente - Tudo On</div>
@@ -289,26 +243,19 @@
                                 </div>
                                 <div class="col-span-2 h-20 bg-brand-500/5 border border-brand-500/20 rounded-lg relative overflow-hidden group">
                                     <div class="absolute inset-0 bg-gradient-to-r from-brand-500/0 via-brand-500/10 to-brand-500/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                                    <!-- Gráfico simulado -->
                                     <svg class="absolute bottom-0 w-full h-12 text-brand-500 opacity-60" viewBox="0 0 100 30" preserveAspectRatio="none"><path d="M0,30 L0,15 C20,25 40,5 60,20 C80,35 100,10 100,10 L100,30 Z" fill="currentColor"></path></svg>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Base do Notebook (Teclado) -->
                     <div class="relative h-3 md:h-5 bg-slate-300 rounded-b-xl border-t border-slate-400 shadow-xl flex justify-center items-start">
-                        <!-- Trackpad -->
                         <div class="w-16 md:w-24 h-1.5 md:h-2 bg-slate-400 rounded-b-md opacity-50"></div>
                     </div>
                 </div>
 
-                <!-- CELULAR FRONTAL (Frente) -->
                 <div class="relative w-[260px] md:w-[290px] h-[480px] md:h-[540px] bg-slate-900 rounded-[2.5rem] md:rounded-[3rem] shadow-[0_30px_60px_rgba(0,0,0,0.4)] border-[6px] border-slate-800 overflow-hidden z-20 animate-float transform md:-translate-x-12">
-                    <!-- Notch -->
                     <div class="absolute top-0 inset-x-0 h-6 bg-slate-800 rounded-b-2xl w-32 mx-auto z-30"></div>
-                    <!-- Tela -->
                     <div class="absolute inset-0 bg-slate-50 flex flex-col pt-8">
-                        <!-- Topo Colorido Dinâmico -->
                         <div id="mock-header" class="bg-brand-500 text-white p-5 rounded-b-3xl shadow-sm mockup-transition flex items-center justify-between">
                             <div>
                                 <div id="mock-title" class="font-black text-lg mb-0.5 tracking-tight">Loja de Eletrônicos</div>
@@ -316,9 +263,7 @@
                             </div>
                             <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm"><i class="fa-solid fa-share-nodes"></i></div>
                         </div>
-                        <!-- Scroll View com classe no-scrollbar -->
                         <div class="flex-1 p-4 overflow-y-auto space-y-4 no-scrollbar">
-                            <!-- Item 1 -->
                             <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex gap-3 items-center mockup-transition hover:border-brand-500 hover:shadow-md cursor-pointer group">
                                 <div id="mock-img1" class="w-16 h-16 bg-slate-200 rounded-lg flex-shrink-0 bg-cover mockup-transition group-hover:scale-105 transition-transform" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=200');"></div>
                                 <div class="w-full">
@@ -327,7 +272,6 @@
                                 </div>
                                 <div class="ml-auto w-8 h-8 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center font-bold text-xl shadow-sm group-hover:bg-brand-500 group-hover:text-white transition-colors">+</div>
                             </div>
-                            <!-- Item 2 -->
                             <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex gap-3 items-center mockup-transition hover:border-brand-500 hover:shadow-md cursor-pointer group">
                                 <div id="mock-img2" class="w-16 h-16 bg-slate-200 rounded-lg flex-shrink-0 bg-cover mockup-transition group-hover:scale-105 transition-transform" style="background-image: url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=200');"></div>
                                 <div class="w-full">
@@ -337,14 +281,12 @@
                                 <div class="ml-auto w-8 h-8 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center font-bold text-xl shadow-sm group-hover:bg-brand-500 group-hover:text-white transition-colors">+</div>
                             </div>
                         </div>
-                        <!-- Botão Comprar -->
                         <div class="p-4 bg-white border-t border-slate-100">
                             <div id="mock-btn" class="w-full bg-brand-500 text-white text-center py-3.5 rounded-xl font-black text-sm mockup-transition shadow-[0_5px_15px_rgba(0,132,255,0.4)] flex justify-center items-center gap-2"><i class="fa-solid fa-bag-shopping"></i> Ver Carrinho (2)</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Notificação Flutuante de Conversão (Gatilho de Venda) -->
                 <div class="absolute bottom-10 -left-4 md:-left-16 bg-white p-3 md:p-4 rounded-2xl shadow-2xl z-30 flex items-center gap-3 border-2 border-green-500 animate-bounce cursor-default">
                     <div class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center text-xl shadow-inner"><i class="fa-solid fa-check-double"></i></div>
                     <div>
@@ -356,7 +298,7 @@
         </div>
     </section>
 
-    <!-- 2. A DOR (Gatilhos Mentais) -->
+    <!-- 2. A DOR -->
     <section class="py-24 bg-slate-900 text-white relative border-t-[8px] border-brand-500 overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
         <div class="absolute top-0 right-0 w-64 h-64 bg-red-500/10 rounded-full blur-3xl"></div>
@@ -370,7 +312,6 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Dor 1 -->
                 <div class="bg-slate-800/80 backdrop-blur-sm p-10 rounded-3xl border border-slate-700 hover:border-red-500 transition-all duration-300 group reveal hover:-translate-y-2">
                     <div class="w-16 h-16 bg-red-500/10 rounded-2xl flex items-center justify-center text-red-500 text-3xl mb-6 group-hover:scale-110 group-hover:bg-red-500 group-hover:text-white transition-all shadow-lg border border-red-500/20">
                         <i class="fa-solid fa-moon"></i>
@@ -378,7 +319,6 @@
                     <h3 class="text-2xl font-black mb-4 text-white group-hover:text-red-400 transition-colors">Vendas Perdidas de Madrugada</h3>
                     <p class="text-slate-400 leading-relaxed font-medium">O cliente entra no seu Instagram às 23h querendo comprar. Você está dormindo, e ele compra da concorrência que já tem um catálogo pronto.</p>
                 </div>
-                <!-- Dor 2 (Novo Foco Agenda) -->
                 <div class="bg-slate-800/80 backdrop-blur-sm p-10 rounded-3xl border border-slate-700 hover:border-yellow-500 transition-all duration-300 group reveal hover:-translate-y-2" style="transition-delay: 100ms;">
                     <div class="w-16 h-16 bg-yellow-500/10 rounded-2xl flex items-center justify-center text-yellow-500 text-3xl mb-6 group-hover:scale-110 group-hover:bg-yellow-500 group-hover:text-white transition-all shadow-lg border border-yellow-500/20">
                         <i class="fa-solid fa-user-clock"></i>
@@ -386,7 +326,6 @@
                     <h3 class="text-2xl font-black mb-4 text-white group-hover:text-yellow-400 transition-colors">Buracos na Agenda e Faltas</h3>
                     <p class="text-slate-400 leading-relaxed font-medium">A dor de cabeça do cliente que desmarca em cima da hora, deixando você com o horário ocioso porque não houve tempo de encaixar a fila de espera.</p>
                 </div>
-                <!-- Dor 3 -->
                 <div class="bg-slate-800/80 backdrop-blur-sm p-10 rounded-3xl border border-slate-700 hover:border-orange-500 transition-all duration-300 group reveal hover:-translate-y-2" style="transition-delay: 200ms;">
                     <div class="w-16 h-16 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-500 text-3xl mb-6 group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all shadow-lg border border-orange-500/20">
                         <i class="fa-solid fa-boxes-stacked"></i>
@@ -398,9 +337,8 @@
         </div>
     </section>
 
-    <!-- 3. PLANO DE VENDAS ASSERTIVO -->
+    <!-- 3. PLANO DE VENDAS -->
     <section id="plano-vendas" class="py-24 bg-white border-b border-slate-200 relative overflow-hidden">
-        <!-- Elementos Decorativos -->
         <div class="absolute top-0 left-0 w-64 h-64 bg-brand-500/5 rounded-full blur-3xl"></div>
         <div class="absolute bottom-0 right-0 w-96 h-96 bg-green-500/5 rounded-full blur-3xl"></div>
         
@@ -414,10 +352,8 @@
             </div>
 
             <div class="relative grid md:grid-cols-3 gap-8 reveal">
-                <!-- Linha conectora invisível no mobile, visível no desktop -->
                 <div class="hidden md:block absolute top-1/2 left-20 right-20 h-1 bg-gradient-to-r from-brand-100 via-brand-500 to-green-400 transform -translate-y-1/2 z-0 rounded-full opacity-50"></div>
 
-                <!-- Passo 1 -->
                 <div class="relative z-10 bg-white p-8 rounded-3xl border-2 border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:border-brand-500 hover:shadow-[0_15px_50px_rgba(0,132,255,0.15)] hover:-translate-y-3 transition-all duration-300 group">
                     <div class="w-20 h-20 bg-slate-900 text-white rounded-2xl flex items-center justify-center text-4xl mb-8 shadow-xl group-hover:scale-110 group-hover:bg-brand-500 transition-all duration-300 mx-auto md:mx-0 border border-slate-700">
                         <i class="fa-solid fa-magnet"></i>
@@ -426,7 +362,6 @@
                     <p class="text-slate-600 text-center md:text-left font-medium leading-relaxed">O cliente clica no seu link do Instagram ou WhatsApp. Em vez de esperar horas por um "Olá", ele cai direto numa <strong>vitrine digital de alto impacto</strong> ou <strong>agenda visual</strong> desenhada para vender.</p>
                 </div>
 
-                <!-- Passo 2 -->
                 <div class="relative z-10 bg-white p-8 rounded-3xl border-2 border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:border-brand-500 hover:shadow-[0_15px_50px_rgba(0,132,255,0.15)] hover:-translate-y-3 transition-all duration-300 group mt-8 md:mt-0">
                     <div class="w-20 h-20 bg-brand-500 text-white rounded-2xl flex items-center justify-center text-4xl mb-8 shadow-[0_10px_20px_rgba(0,132,255,0.4)] group-hover:scale-110 transition-transform mx-auto md:mx-0 border border-brand-400">
                         <i class="fa-solid fa-hand-holding-dollar"></i>
@@ -435,7 +370,6 @@
                     <p class="text-slate-600 text-center md:text-left font-medium leading-relaxed">Ele escolhe o produto/serviço, o profissional que vai atender, e <strong>a forma de pagamento sozinho</strong>. A venda ou agendamento acontece em segundos, sem a chance de o cliente desistir.</p>
                 </div>
 
-                <!-- Passo 3 -->
                 <div class="relative z-10 bg-slate-900 p-8 rounded-3xl border-2 border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.2)] hover:border-green-500 hover:shadow-[0_20px_50px_rgba(34,197,94,0.2)] hover:-translate-y-3 transition-all duration-300 group mt-8 md:mt-0">
                     <div class="absolute -top-4 right-8 md:-right-4 bg-green-500 text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg border border-green-400 animate-pulse">Fase de Escala</div>
                     <div class="w-20 h-20 bg-green-500 text-white rounded-2xl flex items-center justify-center text-4xl mb-8 shadow-[0_10px_20px_rgba(34,197,94,0.4)] group-hover:scale-110 transition-transform mx-auto md:mx-0 border border-green-400">
@@ -454,7 +388,7 @@
         </div>
     </section>
 
-    <!-- 4. SOLUÇÃO (A Tecnologia Definitiva com Foco na Agenda) -->
+    <!-- 4. SOLUÇÃO -->
     <section id="beneficios" class="py-24 bg-slate-50 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center max-w-4xl mx-auto mb-20 reveal">
@@ -464,7 +398,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
-                <!-- Funcionalidade 1 -->
                 <div class="group p-8 bg-white rounded-3xl border border-slate-200 hover:shadow-2xl hover:-translate-y-2 hover:border-brand-500 transition-all duration-300 relative overflow-hidden">
                     <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-brand-500 text-3xl mb-6 relative z-10 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 shadow-sm border border-slate-100">
                         <i class="fa-solid fa-store"></i>
@@ -472,7 +405,6 @@
                     <h4 class="font-black text-xl text-slate-900 mb-3 relative z-10">Catálogo & Agenda Online</h4>
                     <p class="text-slate-600 relative z-10 font-medium">Vitrine de produtos ou agenda de serviços feita para converter. O cliente navega, escolhe o profissional e marca sozinho.</p>
                 </div>
-                <!-- Funcionalidade 2 (Destaque Fila) -->
                 <div class="group p-8 bg-white rounded-3xl border border-slate-200 hover:shadow-2xl hover:-translate-y-2 hover:border-brand-500 transition-all duration-300 relative overflow-hidden">
                     <div class="absolute top-0 right-0 bg-brand-500 text-white text-[10px] font-black uppercase px-3 py-1 rounded-bl-xl z-20">Novo</div>
                     <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-brand-500 text-3xl mb-6 relative z-10 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 shadow-sm border border-slate-100">
@@ -481,7 +413,6 @@
                     <h4 class="font-black text-xl text-slate-900 mb-3 relative z-10">Fila de Espera Inteligente</h4>
                     <p class="text-slate-600 relative z-10 font-medium">Alguém desmarcou o corte ou consulta? O sistema avisa o próximo da fila e preenche o buraco automaticamente. Lucro máximo!</p>
                 </div>
-                <!-- Funcionalidade 3 -->
                 <div class="group p-8 bg-white rounded-3xl border border-slate-200 hover:shadow-2xl hover:-translate-y-2 hover:border-brand-500 transition-all duration-300 relative overflow-hidden">
                     <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-brand-500 text-3xl mb-6 relative z-10 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 shadow-sm border border-slate-100">
                         <i class="fa-solid fa-boxes-stacked"></i>
@@ -489,7 +420,6 @@
                     <h4 class="font-black text-xl text-slate-900 mb-3 relative z-10">Estoque & Bloqueios</h4>
                     <p class="text-slate-600 relative z-10 font-medium">Vendeu um produto? O estoque corta. Agendou? O horário some da tela. Sem vendas duplicadas ou furos operacionais.</p>
                 </div>
-                <!-- Funcionalidade 4 -->
                 <div class="group p-8 bg-white rounded-3xl border border-slate-200 hover:shadow-2xl hover:-translate-y-2 hover:border-brand-500 transition-all duration-300 relative overflow-hidden">
                     <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-brand-500 text-3xl mb-6 relative z-10 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 shadow-sm border border-slate-100">
                         <i class="fa-brands fa-whatsapp"></i>
@@ -501,12 +431,11 @@
         </div>
     </section>
 
-    <!-- NOVO: CARROSSEL DE DEPOIMENTOS (Interativo com Scroll e Zoom) -->
+    <!-- CARROSSEL DE DEPOIMENTOS -->
     <section id="depoimentos" class="py-24 bg-slate-900 overflow-hidden relative">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 mb-16 relative z-10">
             <div class="text-center reveal">
-                <!-- Etiqueta Premium Assertiva e Iluminada -->
                 <span class="text-white font-black uppercase text-sm px-6 py-2.5 rounded-full mb-4 inline-flex items-center gap-2 bg-brand-500 shadow-[0_0_15px_rgba(0,132,255,0.5)] border border-brand-400">
                     <i class="fa-solid fa-star text-yellow-300"></i> Resultados Reais
                 </span>
@@ -515,12 +444,8 @@
             </div>
         </div>
 
-        <!-- Pista do Carrossel Interativa (Arrastar & Zoom) -->
         <div class="relative w-full overflow-hidden z-10 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-slate-900 before:to-transparent before:pointer-events-none after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-slate-900 after:to-transparent after:pointer-events-none">
-            
             <div id="depoimentos-track" class="flex gap-6 overflow-x-auto no-scrollbar px-10 pb-12 pt-4 cursor-grab items-stretch w-full scroll-smooth">
-                
-                <!-- Depoimento 1 -->
                 <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0 transform transition-all duration-300 hover:scale-105 hover:bg-slate-700 hover:border-brand-500 hover:shadow-[0_15px_30px_rgba(0,132,255,0.2)] hover:z-20 select-none">
                     <div class="flex items-center gap-4 mb-6">
                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500 pointer-events-none">
@@ -534,8 +459,6 @@
                     </div>
                     <p class="text-slate-300 font-medium leading-relaxed">"A Fila de Espera Inteligente salvou minha agenda. Quando alguém desmarca, o sistema avisa o próximo automaticamente. Não perco mais nenhum horário!"</p>
                 </div>
-
-                <!-- Depoimento 2 -->
                 <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0 transform transition-all duration-300 hover:scale-105 hover:bg-slate-700 hover:border-brand-500 hover:shadow-[0_15px_30px_rgba(0,132,255,0.2)] hover:z-20 select-none">
                     <div class="flex items-center gap-4 mb-6">
                         <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500 pointer-events-none">
@@ -549,8 +472,6 @@
                     </div>
                     <p class="text-slate-300 font-medium leading-relaxed">"Antes eu passava horas respondendo no WhatsApp. Hoje acordo e já tenho pedidos pagos com baixa no estoque. O Tudo On foi o melhor investimento do ano."</p>
                 </div>
-
-                <!-- Depoimento 3 -->
                 <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0 transform transition-all duration-300 hover:scale-105 hover:bg-slate-700 hover:border-brand-500 hover:shadow-[0_15px_30px_rgba(0,132,255,0.2)] hover:z-20 select-none">
                     <div class="flex items-center gap-4 mb-6">
                         <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500 pointer-events-none">
@@ -564,8 +485,6 @@
                     </div>
                     <p class="text-slate-300 font-medium leading-relaxed">"Fugimos das taxas abusivas dos aplicativos. Nosso cardápio digital recebe pedidos direto no nosso zap, organizadinho e já com o frete calculado. Surreal."</p>
                 </div>
-
-                <!-- Depoimento 4 -->
                 <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0 transform transition-all duration-300 hover:scale-105 hover:bg-slate-700 hover:border-brand-500 hover:shadow-[0_15px_30px_rgba(0,132,255,0.2)] hover:z-20 select-none">
                     <div class="flex items-center gap-4 mb-6">
                         <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500 pointer-events-none">
@@ -579,8 +498,6 @@
                     </div>
                     <p class="text-slate-300 font-medium leading-relaxed">"Os lembretes automáticos no WhatsApp acabaram com as faltas dos meus pacientes. Eles agendam sozinhos e o sistema cuida de lembrar. Perfeito!"</p>
                 </div>
-
-                <!-- Depoimento 5 (Provedor) -->
                 <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0 transform transition-all duration-300 hover:scale-105 hover:bg-slate-700 hover:border-brand-500 hover:shadow-[0_15px_30px_rgba(0,132,255,0.2)] hover:z-20 select-none">
                     <div class="flex items-center gap-4 mb-6">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500 pointer-events-none">
@@ -594,8 +511,6 @@
                     </div>
                     <p class="text-slate-300 font-medium leading-relaxed">"Poder separar os planos por cidade e automatizar a cobrança poupou-me o trabalho de contratar mais dois assistentes. A plataforma é incrível."</p>
                 </div>
-
-                <!-- Duplicação invisível para o loop infinito funcionar com JS -->
                 <div class="w-[320px] md:w-[400px] bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-xl shrink-0 transform transition-all duration-300 hover:scale-105 hover:bg-slate-700 hover:border-brand-500 hover:shadow-[0_15px_30px_rgba(0,132,255,0.2)] hover:z-20 select-none">
                     <div class="flex items-center gap-4 mb-6">
                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-500 pointer-events-none">
@@ -627,7 +542,6 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
-                <!-- Nicho 1: Celulares -->
                 <a href="https://wa.me/5584921466248?text=Oi!%20Tenho%20uma%20Loja%20de%20Celular/Assistência%20e%20quero%20ver%20um%20modelo%20do%20Tudo%20On." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-brand-500/40 transition-all duration-500 hover:-translate-y-3 block border border-slate-200 hover:border-brand-500">
                     <img src="https://images.unsplash.com/photo-1588508065123-287b28e01390?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Lojas e Assistências de Celular">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
@@ -646,7 +560,6 @@
                     </div>
                 </a>
 
-                <!-- Nicho 2: Barbearias -->
                 <a href="https://wa.me/5584921466248?text=Oi!%20Tenho%20uma%20Barbearia/Salão%20e%20quero%20ver%20um%20modelo%20do%20Tudo%20On." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-brand-500/40 transition-all duration-500 hover:-translate-y-3 block border border-slate-200 hover:border-brand-500">
                     <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Barbearia">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
@@ -665,7 +578,6 @@
                     </div>
                 </a>
 
-                <!-- Nicho 3: Delivery -->
                 <a href="https://wa.me/5584921466248?text=Oi!%20Meu%20nicho%20é%20Hamburgueria/Delivery%20e%20quero%20ver%20um%20modelo." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-brand-500/40 transition-all duration-500 hover:-translate-y-3 block border border-slate-200 hover:border-brand-500">
                     <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Hamburgueria">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
@@ -683,7 +595,6 @@
                     </div>
                 </a>
 
-                <!-- Nicho 4: Clínicas -->
                 <a href="https://wa.me/5584921466248?text=Oi!%20Minha%20área%20é%20Clínica/Estética%20e%20quero%20ver%20um%20modelo%20do%20Tudo%20On." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-brand-500/40 transition-all duration-500 hover:-translate-y-3 block border border-slate-200 hover:border-brand-500">
                     <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Estética">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
@@ -702,7 +613,6 @@
                     </div>
                 </a>
 
-                <!-- Nicho 5: Roupas -->
                 <a href="https://wa.me/5584921466248?text=Oi!%20Tenho%20uma%20Loja%20de%20Roupas%20e%20quero%20ver%20um%20modelo%20do%20Tudo%20On." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-brand-500/40 transition-all duration-500 hover:-translate-y-3 block border border-slate-200 hover:border-brand-500">
                     <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Roupas">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
@@ -720,7 +630,6 @@
                     </div>
                 </a>
 
-                <!-- Nicho 6: Semijoias -->
                 <a href="https://wa.me/5584921466248?text=Oi!%20Vendo%20Semijoias/Acessórios%20e%20quero%20ver%20um%20modelo%20do%20Tudo%20On." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-brand-500/40 transition-all duration-500 hover:-translate-y-3 block border border-slate-200 hover:border-brand-500">
                     <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Semijoias">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
@@ -738,7 +647,6 @@
                     </div>
                 </a>
 
-                <!-- Nicho 7: Telecom e Provedores -->
                 <a href="https://wa.me/5584921466248?text=Oi!%20Sou%20Provedor%20de%20Internet/Telecom%20e%20quero%20ver%20um%20modelo%20do%20Tudo%20On." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-brand-500/40 transition-all duration-500 hover:-translate-y-3 block border border-slate-200 hover:border-brand-500">
                     <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Provedor de Internet e Telecom">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
@@ -757,7 +665,6 @@
                     </div>
                 </a>
 
-                <!-- Nicho 8: Profissionais Liberais e Serviços -->
                 <a href="https://wa.me/5584921466248?text=Oi!%20Sou%20Prestador%20de%20Serviços/Profissional%20Liberal%20e%20quero%20ver%20um%20modelo%20do%20Tudo%20On." target="_blank" class="group relative h-80 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-brand-500/40 transition-all duration-500 hover:-translate-y-3 block border border-slate-200 hover:border-brand-500">
                     <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Profissionais Liberais">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90 group-hover:opacity-95 transition-opacity"></div>
@@ -780,7 +687,7 @@
         </div>
     </section>
 
-    <!-- 6. OFERTA / PREÇO (Agressiva) -->
+    <!-- 6. OFERTA / PREÇO -->
     <section id="planos" class="py-24 bg-slate-900 relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-500/20 rounded-full blur-[100px]"></div>
@@ -791,9 +698,7 @@
                 <p class="text-slate-300 text-xl font-medium">Pague uma vez pela tecnologia e ela trabalha para você para sempre. <strong class="text-white">Sem "mensalidades surpresa" e sem taxas por venda.</strong></p>
             </div>
 
-            <!-- Card de Oferta Principal -->
             <div class="bg-white rounded-3xl p-8 md:p-12 shadow-[0_0_80px_rgba(0,132,255,0.3)] border-[4px] border-brand-500 max-w-2xl mx-auto relative transform transition-transform reveal hover:scale-[1.02] duration-500">
-                <!-- Badge -->
                 <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-red-600 to-red-500 text-white px-8 py-3 rounded-full font-black text-sm uppercase tracking-widest shadow-[0_10px_20px_rgba(239,68,68,0.4)] flex items-center gap-2 border-2 border-white">
                     <i class="fa-solid fa-fire animate-pulse"></i> Vagas Limitadas
                 </div>
@@ -833,13 +738,12 @@
         </div>
     </section>
 
-    <!-- 7. FAQ (Quebra de Objeções) -->
+    <!-- 7. FAQ -->
     <section id="faq" class="py-24 bg-white border-b border-slate-200">
         <div class="max-w-4xl mx-auto px-4 reveal">
             <h2 class="text-4xl font-black text-slate-900 text-center mb-12 flex items-center justify-center gap-3"><i class="fa-solid fa-circle-question text-brand-500"></i> Tem dúvidas? Nós respondemos.</h2>
             
             <div class="space-y-4">
-                <!-- Pergunta 1 -->
                 <div class="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-brand-500 hover:shadow-md transition-all">
                     <button onclick="toggleFAQ(1)" class="w-full px-6 py-6 text-left flex justify-between items-center font-bold text-lg text-slate-800 focus:outline-none">
                         <span>O sistema gerencia mesmo a fila de espera?</span>
@@ -849,7 +753,6 @@
                         Sim! Para o nicho de serviços (como Clínicas e Barbearias), caso alguém desmarque, o sistema notifica automaticamente as pessoas que estavam aguardando aquele horário, garantindo que você não fique com a agenda vazia.
                     </div>
                 </div>
-                <!-- Pergunta 2 -->
                 <div class="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-brand-500 hover:shadow-md transition-all">
                     <button onclick="toggleFAQ(2)" class="w-full px-6 py-6 text-left flex justify-between items-center font-bold text-lg text-slate-800 focus:outline-none">
                         <span>Cobram comissão sobre as minhas vendas ou serviços?</span>
@@ -859,7 +762,6 @@
                         NUNCA. Nós somos uma empresa de tecnologia focada no seu crescimento, não um marketplace faminto. O dinheiro da sua venda ou agendamento vai 100% para você.
                     </div>
                 </div>
-                <!-- Pergunta 3 -->
                 <div class="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-brand-500 hover:shadow-md transition-all">
                     <button onclick="toggleFAQ(3)" class="w-full px-6 py-6 text-left flex justify-between items-center font-bold text-lg text-slate-800 focus:outline-none">
                         <span>Sou péssimo com tecnologia. Vou conseguir usar?</span>
@@ -924,9 +826,10 @@
                 Criado por <a href="https://www.instagram.com/gilneicreative/" target="_blank" class="text-brand-500 hover:text-white transition-colors"><i class="fa-solid fa-pen-nib ml-1"></i> Gilnei Creative</a>
             </div>
 
+            <!-- Links para as Modais de Termos e Privacidade -->
             <div class="flex gap-6 text-sm font-medium">
-                <a href="https://wa.me/5584921466248?text=Oi!%20Gostaria%20de%20ler%20os%20Termos%20de%20Uso." target="_blank" class="hover:text-brand-500 transition-colors"><i class="fa-solid fa-file-contract mr-1"></i> Termos</a>
-                <a href="https://wa.me/5584921466248?text=Oi!%20Gostaria%20de%20ler%20a%20Política%20de%20Privacidade." target="_blank" class="hover:text-brand-500 transition-colors"><i class="fa-solid fa-user-shield mr-1"></i> Privacidade</a>
+                <button onclick="openModal('modalTermos')" class="hover:text-brand-500 transition-colors cursor-pointer focus:outline-none"><i class="fa-solid fa-file-contract mr-1"></i> Termos</button>
+                <button onclick="openModal('modalPrivacidade')" class="hover:text-brand-500 transition-colors cursor-pointer focus:outline-none"><i class="fa-solid fa-user-shield mr-1"></i> Privacidade</button>
             </div>
         </div>
     </footer>
@@ -939,7 +842,62 @@
         </span>
     </a>
 
-    <!-- SCRIPTS DE FUNCIONAMENTO (Animações, Captura de Lead, Preloader) -->
+    <!-- MODAL: TERMOS DE USO -->
+    <div id="modalTermos" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-[100000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div id="modalTermosContent" class="bg-white rounded-3xl w-full max-w-3xl max-h-[85vh] flex flex-col transform scale-95 transition-transform duration-300 shadow-2xl">
+            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50 rounded-t-3xl">
+                <h3 class="text-2xl font-black text-slate-900"><i class="fa-solid fa-file-contract text-brand-500 mr-2"></i> Termos de Uso</h3>
+                <button onclick="closeModal('modalTermos')" class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-slate-500 hover:bg-red-100 hover:text-red-500 transition-colors shadow-sm"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-6 overflow-y-auto text-slate-600 space-y-4 text-sm leading-relaxed no-scrollbar">
+                <p><strong>Última atualização:</strong> 27 de Abril de 2026</p>
+                <p>Bem-vindo à <strong>Tudo On Sistemas</strong>. Estes Termos de Uso regulam o acesso e a utilização das nossas soluções tecnológicas, catálogos digitais, sistemas de agendamento e automação de atendimento. Ao contratar ou utilizar os nossos serviços, você concorda integralmente com as condições aqui estabelecidas.</p>
+                
+                <h4 class="text-slate-900 font-bold mt-4">1. O Serviço</h4>
+                <p>A Tudo On fornece soluções de software voltadas para a automação de vendas, gestão de filas de espera, catálogos digitais e agendamentos inteligentes (o "Serviço"). O sistema é entregue configurado para o Contratante, operando de forma autônoma para facilitar o atendimento aos seus clientes finais.</p>
+                
+                <h4 class="text-slate-900 font-bold mt-4">2. Condições de Pagamento e Licenciamento</h4>
+                <p><strong>2.1.</strong> Salvo acordo expresso em contrário, a Tudo On opera sob o modelo de <strong>implantação com pagamento único</strong> (sem mensalidades recorrentes obrigatórias pela licença de uso do software base) e <strong>sem cobrança de taxas por venda ou agendamento</strong>.<br>
+                <strong>2.2.</strong> O Contratante está ciente de que a operação do sistema pode depender de infraestruturas de terceiros (ex: Vercel, Google Cloud, provedores de domínio, APIs de WhatsApp).<br>
+                <strong>2.3.</strong> A Tudo On reserva-se o direito de oferecer manutenções avançadas ou suporte premium mediante contratação separada.</p>
+                
+                <h4 class="text-slate-900 font-bold mt-4">3. Responsabilidades</h4>
+                <p>O Contratante é o único responsável pelos produtos, serviços, preços e ofertas disponibilizados através do sistema Tudo On. O Contratante compromete-se a utilizar a plataforma estritamente para fins lícitos.</p>
+                
+                <h4 class="text-slate-900 font-bold mt-4">4. Propriedade Intelectual</h4>
+                <p>Todos os direitos de propriedade intelectual sobre o código-fonte, layout, design, arquitetura de software e marca "Tudo On" são de titularidade exclusiva da Tudo On Sistemas.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: PRIVACIDADE -->
+    <div id="modalPrivacidade" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-[100000] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div id="modalPrivacidadeContent" class="bg-white rounded-3xl w-full max-w-3xl max-h-[85vh] flex flex-col transform scale-95 transition-transform duration-300 shadow-2xl">
+            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50 rounded-t-3xl">
+                <h3 class="text-2xl font-black text-slate-900"><i class="fa-solid fa-user-shield text-brand-500 mr-2"></i> Política de Privacidade</h3>
+                <button onclick="closeModal('modalPrivacidade')" class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-slate-500 hover:bg-red-100 hover:text-red-500 transition-colors shadow-sm"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-6 overflow-y-auto text-slate-600 space-y-4 text-sm leading-relaxed no-scrollbar">
+                <p><strong>Última atualização:</strong> 27 de Abril de 2026</p>
+                <p>A <strong>Tudo On Sistemas</strong> tem um compromisso absoluto com a proteção da privacidade e a segurança dos dados pessoais dos nossos clientes (Contratantes) e dos clientes finais que interagem com os sistemas por nós desenvolvidos.</p>
+                
+                <h4 class="text-slate-900 font-bold mt-4">1. Dados que Coletamos</h4>
+                <p><strong>Dados do Contratante:</strong> Nome, e-mail, telefone (WhatsApp), empresa, cidade, estado e dados necessários para o faturamento.<br>
+                <strong>Dados dos Clientes Finais:</strong> Durante a operação do sistema no seu negócio, a tecnologia capta dados dos <em>seus</em> clientes. A Tudo On atua apenas como <strong>Operadora</strong> tecnológica destes dados, fornecendo a infraestrutura para que o Contratante (<strong>Controlador</strong>) faça a gestão.</p>
+                
+                <h4 class="text-slate-900 font-bold mt-4">2. Como Usamos e Compartilhamos</h4>
+                <p>A Tudo On <strong>não vende, aluga ou comercializa</strong> dados pessoais sob nenhuma circunstância. Os dados coletados são utilizados estritamente para prestar, manter e melhorar os nossos serviços de automação. O compartilhamento ocorre apenas de forma técnica para a viabilização do serviço (hospedagem em nuvem, APIs de comunicação).</p>
+                
+                <h4 class="text-slate-900 font-bold mt-4">3. Armazenamento e Segurança</h4>
+                <p>Empregamos medidas técnicas rigorosas (criptografia de trânsito) para proteger as informações contra acessos não autorizados. Os dados captados são processados de forma cega pela nossa tecnologia e repassados para os repositórios restritos do Contratante.</p>
+                
+                <h4 class="text-slate-900 font-bold mt-4">4. Seus Direitos (LGPD)</h4>
+                <p>Garantimos todos os direitos previstos na LGPD, incluindo o acesso, correção, atualização, anonimização, bloqueio ou exclusão de dados. Para exercer seus direitos, entre em contato através do nosso Atendimento Oficial via WhatsApp.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS DE FUNCIONAMENTO -->
     <script>
         // --- 1. PRELOADER E REVEAL INICIAL (Sincronizados) ---
         window.addEventListener('load', () => {
@@ -967,8 +925,43 @@
         }
         window.addEventListener('scroll', revealOnScroll);
 
-        // --- 3. MÁGICA DA CAPTURA DE LEAD PARA A PLANILHA (VIA JSON API REST) ---
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwhD5NWjZF4mcOPlNMJWBcuTCrlGBN_zmxPT66nOqiScoVPUwP2asPICmX947nB0qog/exec'; 
+        // --- 3. GESTÃO DOS MODAIS (TERMOS E PRIVACIDADE) ---
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const content = document.getElementById(modalId + 'Content');
+            document.body.classList.add('modal-open');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            setTimeout(() => {
+                modal.classList.add('modal-active');
+                content.classList.add('modal-content-active');
+            }, 10);
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const content = document.getElementById(modalId + 'Content');
+            modal.classList.remove('modal-active');
+            content.classList.remove('modal-content-active');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.classList.remove('modal-open');
+            }, 300);
+        }
+
+        // Fechar modal clicando fora dele
+        window.onclick = function(event) {
+            const modalTermos = document.getElementById('modalTermos');
+            const modalPrivacidade = document.getElementById('modalPrivacidade');
+            if (event.target == modalTermos) closeModal('modalTermos');
+            if (event.target == modalPrivacidade) closeModal('modalPrivacidade');
+        }
+
+        // --- 4. MÁGICA DA CAPTURA DE LEAD PARA A PLANILHA (VIA JSON API REST) ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzzrctqk8rmt9I3gzsAnU3epX8dKW-ZPu2WknQpeZjX-6aVdx5rr7SxfYPEEXmsZVzi/exec'; 
 
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -983,17 +976,14 @@
             const feedbackBox = document.getElementById('successFeedback');
             const btn = document.getElementById('submitBtn');
             
-            // Estado de carregamento do botão
             btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Preparando acesso...';
             btn.classList.add('opacity-80', 'cursor-not-allowed');
             
-            // Calcula o tempo
             const duracaoMs = performance.now();
             const duracaoSegundos = Math.floor(duracaoMs / 1000) + 's'; 
             
-            // PREPARAÇÃO ASSERTIVA JSON: Exatamente como o backend está esperando!
+            // PREPARAÇÃO ASSERTIVA JSON: Padrão profissional
             const payload = {
-                action: "salvar_lead", // Rota que definimos no Apps Script
                 nome: name,
                 telefone: phone,
                 email: email,
@@ -1002,44 +992,41 @@
                 duracao: duracaoSegundos
             };
 
-            // FUNÇÃO QUE MOSTRA O FEEDBACK E VAI PRO VERCEL
             let jaRedirecionou = false;
             const mostrarSucessoEVaiParaVercel = () => {
                 if (jaRedirecionou) return;
                 jaRedirecionou = true;
                 
-                // Animação: Oculta o formulário e mostra a mensagem de sucesso
                 formContainer.classList.add('hidden');
                 feedbackBox.classList.remove('hidden');
                 feedbackBox.classList.add('flex');
                 
-                // Espera 2.5 segundos e redireciona
                 setTimeout(() => {
                     window.location.href = `https://barbeariadoze-two.vercel.app/`;
                 }, 2500);
             };
 
-            // TRAVA DE SEGURANÇA MÁXIMA: Redireciona independente de resposta da API
+            // TRAVA DE SEGURANÇA MÁXIMA: Redireciona de qualquer forma
             setTimeout(mostrarSucessoEVaiParaVercel, 3000);
 
             // ENVIO PARA O GOOGLE VIA JSON (Bypass de Preflight de CORS com text/plain)
             fetch(SCRIPT_URL, {
                 method: 'POST',
+                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'text/plain;charset=utf-8'
                 },
                 body: JSON.stringify(payload)
-            }).then(response => response.json())
-              .then(data => {
-                console.log("Resposta da API:", data);
+            }).then(() => {
+                console.log("🚀 Payload JSON disparado com sucesso!");
                 mostrarSucessoEVaiParaVercel(); 
             }).catch((error) => {
-                console.error('Erro silencioso:', error);
+                console.error('Erro na rede:', error);
                 mostrarSucessoEVaiParaVercel(); 
             });
         });
 
-        // --- 4. FAQ ACORDEÃO ---
+        // --- 5. FAQ ACORDEÃO ---
         function toggleFAQ(id) {
             const content = document.getElementById('faq-' + id);
             const icon = document.getElementById('icon-' + id);
@@ -1052,7 +1039,7 @@
             }
         }
 
-        // --- 5. ANIMAÇÃO DO MOCKUP DE CELULAR (DINÂMICO) ---
+        // --- 6. ANIMAÇÃO DO MOCKUP DE CELULAR (DINÂMICO) ---
         document.addEventListener('DOMContentLoaded', () => {
             const mockups = [
                 {
@@ -1093,7 +1080,6 @@
                 index = (index + 1) % mockups.length;
                 const data = mockups[index];
 
-                // Aplica atualizações na UI Frontal
                 document.getElementById('mock-header').className = `${data.headerColor} text-white p-5 rounded-b-3xl shadow-sm mockup-transition flex items-center justify-between`;
                 document.getElementById('mock-title').innerText = data.title;
                 document.getElementById('mock-status').innerText = data.status;
@@ -1110,20 +1096,18 @@
                 document.getElementById('mock-btn').innerHTML = data.btnText;
                 document.getElementById('mock-notify').innerText = data.notifyText;
                 
-                // Aplica atualizações na UI de fundo (Notebook)
                 document.getElementById('dash-value').innerHTML = data.dashVal;
 
-            }, 4000); // Muda a cada 4 segundos
+            }, 4000); 
         });
 
-        // --- 6. CARROSSEL DE DEPOIMENTOS ARRASTÁVEL E AUTOMÁTICO ---
+        // --- 7. CARROSSEL DE DEPOIMENTOS ARRASTÁVEL E AUTOMÁTICO ---
         const track = document.getElementById('depoimentos-track');
         let isDown = false;
         let startX;
         let scrollLeft;
         let isHovering = false;
 
-        // Eventos de Mouse (Arrastar)
         track.addEventListener('mousedown', (e) => {
             isDown = true;
             track.classList.add('cursor-grabbing');
@@ -1146,20 +1130,17 @@
             if (!isDown) return;
             e.preventDefault();
             const x = e.pageX - track.offsetLeft;
-            const walk = (x - startX) * 2; // Velocidade do arrasto
+            const walk = (x - startX) * 2;
             track.scrollLeft = scrollLeft - walk;
         });
 
-        // Pausar auto-scroll ao passar o rato ou tocar
         track.addEventListener('mouseenter', () => isHovering = true);
         track.addEventListener('touchstart', () => isHovering = true, {passive: true});
         track.addEventListener('touchend', () => { setTimeout(() => isHovering = false, 2000) }, {passive: true});
 
-        // Loop Automático do Carrossel
         setInterval(() => {
             if (!isHovering && !isDown) {
-                track.scrollLeft += 1.5; // Velocidade do auto-scroll
-                // Voltar ao início sem que o cliente note (efeito infinito)
+                track.scrollLeft += 1.5;
                 if (track.scrollLeft >= (track.scrollWidth - track.clientWidth - 5)) {
                     track.scrollLeft = 0;
                 }
