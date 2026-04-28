@@ -960,7 +960,7 @@
             if (event.target == modalPrivacidade) closeModal('modalPrivacidade');
         }
 
-        // --- 4. MÁGICA DA CAPTURA DE LEAD PARA A PLANILHA (VIA JSON API REST) ---
+        // --- 4. MÁGICA DA CAPTURA DE LEAD PARA A PLANILHA ---
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzzrctqk8rmt9I3gzsAnU3epX8dKW-ZPu2WknQpeZjX-6aVdx5rr7SxfYPEEXmsZVzi/exec'; 
 
         document.getElementById('leadForm').addEventListener('submit', function(e) {
@@ -982,15 +982,15 @@
             const duracaoMs = performance.now();
             const duracaoSegundos = Math.floor(duracaoMs / 1000) + 's'; 
             
-            // PREPARAÇÃO ASSERTIVA JSON: Padrão profissional
-            const payload = {
+            // PREPARAÇÃO ASSERTIVA: Usando URLSearchParams para envio via GET
+            const params = new URLSearchParams({
                 nome: name,
                 telefone: phone,
                 email: email,
                 cidade: city,
                 estado: state,
                 duracao: duracaoSegundos
-            };
+            });
 
             let jaRedirecionou = false;
             const mostrarSucessoEVaiParaVercel = () => {
@@ -1006,19 +1006,17 @@
                 }, 2500);
             };
 
-            // TRAVA DE SEGURANÇA MÁXIMA: Redireciona de qualquer forma
+            // TRAVA DE SEGURANÇA MÁXIMA: Redireciona independente de resposta da API
             setTimeout(mostrarSucessoEVaiParaVercel, 3000);
 
-            // ENVIO PARA O GOOGLE VIA JSON (Bypass de Preflight de CORS com text/plain)
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'text/plain;charset=utf-8'
-                },
-                body: JSON.stringify(payload)
+            // O SEGREDO: Envio via GET anexado à URL. Assim o Google não descarta os dados no redirecionamento (302).
+            const urlFinal = SCRIPT_URL + '?' + params.toString();
+
+            fetch(urlFinal, {
+                method: 'GET',
+                mode: 'no-cors'
             }).then(() => {
-                console.log("🚀 Payload JSON disparado com sucesso!");
+                console.log("🚀 Payload disparado com sucesso via GET!");
                 mostrarSucessoEVaiParaVercel(); 
             }).catch((error) => {
                 console.error('Erro na rede:', error);
@@ -1092,7 +1090,7 @@
                 document.getElementById('mock-item2').innerText = data.item2;
                 document.getElementById('mock-price2').innerText = data.price2;
 
-                document.getElementById('mock-btn').className = `w-full ${data.btnColor} text-white text-center py-3.5 rounded-xl font-black text-sm mockup-transition shadow-[0_5px_15px_rgba(0,0,0,0.2)] flex justify-center items-center gap-2`;
+                document.getElementById('mock-btn').className = `w-full ${data.btnColor} text-white text-center py-3.5 rounded-xl font-black text-sm mockup-transition shadow-[0_5px_15px_rgba(0,132,255,0.4)] flex justify-center items-center gap-2`;
                 document.getElementById('mock-btn').innerHTML = data.btnText;
                 document.getElementById('mock-notify').innerText = data.notifyText;
                 
