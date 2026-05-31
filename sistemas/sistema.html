@@ -94,7 +94,6 @@
             opacity: 0.1; animation: scanline 8s linear infinite;
         }
 
-        /* Classe para ataque DDoS visual */
         .ddos-attack { background-color: #450a0a !important; animation: shake 0.5s infinite; }
     </style>
 </head>
@@ -103,7 +102,6 @@
 <div id="smart-tooltip"></div>
 <div id="toast-container" class="fixed bottom-5 right-5 z-[200] flex flex-col gap-3 pointer-events-none"></div>
 
-<!-- Modal Pódio (Modo TV Líder) -->
 <div id="podium-modal" class="fixed inset-0 z-[300] hidden bg-black/95 flex flex-col items-center justify-center backdrop-blur-md p-4">
     <button onclick="document.getElementById('podium-modal').classList.add('hidden')" class="absolute top-6 right-8 text-gray-500 hover:text-white text-3xl"><i class="fa-solid fa-xmark"></i></button>
     <h2 class="text-4xl md:text-5xl font-black text-white mb-2 uppercase tracking-widest brand-gradient">Top Performers</h2>
@@ -131,7 +129,6 @@
     </div>
 </div>
 
-<!-- Tela de Login & Boot -->
 <div id="login-screen" class="fixed inset-0 z-[100] flex items-center justify-center bg-[#050810]">
     <div class="absolute inset-0 bg-brand/5 backdrop-blur-md"></div>
     <div id="boot-sequence" class="absolute inset-0 z-20 flex items-center justify-center bg-[#050810] transition-opacity duration-1000 hidden">
@@ -165,9 +162,7 @@
     </div>
 </div>
 
-<!-- Sistema Principal -->
 <div id="app" class="hidden h-screen w-full flex overflow-hidden">
-    <!-- Sidebar Responsiva -->
     <aside id="sidebar" class="w-72 bg-dark-panel flex flex-col md:relative mobile-hide border-r border-dark-border shadow-xl shrink-0 z-20">
         <div class="h-20 flex items-center justify-between px-6 border-b border-dark-border bg-dark-bg">
             <div class="flex items-center">
@@ -191,7 +186,6 @@
 
     <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden" onclick="toggleSidebar()"></div>
 
-    <!-- Main Content -->
     <main class="flex-1 flex flex-col h-screen overflow-hidden relative bg-dark-bg">
         <header class="h-16 md:h-20 bg-dark-panel border-b border-dark-border flex items-center justify-between px-4 md:px-8 z-10 shrink-0 shadow-md">
             <div class="flex items-center gap-3">
@@ -240,7 +234,6 @@
         playPop() { this.init(); this.playTone(800, 'sine', 0.05, 0.05); },
         playAlert() { this.init(); this.playTone(300, 'sawtooth', 0.1, 0.1); setTimeout(() => this.playTone(200, 'sawtooth', 0.2, 0.1), 100); },
         playCoin() { 
-            // Som gamificado estilo "Caixa Registradora / Moeda de Ouro" (Cha-ching / Ping)
             this.init();
             this.playTone(987.77, 'sine', 0.08, 0.1); // B5
             setTimeout(() => this.playTone(1318.51, 'sine', 0.2, 0.15), 80); // E6
@@ -387,8 +380,6 @@
         carrinhoTotal = 0;
         container.innerHTML = `
             <div class="fade-in h-full flex flex-col gap-4 pb-4">
-                
-                <!-- PAINEL ESTRATÉGICO DINÂMICO (Dest/Destaque do Vendedor) -->
                 <div class="bg-gradient-to-r from-brand-dark to-brand p-0.5 rounded-xl shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-all duration-300" id="vendedor-banner">
                     <div class="bg-dark-bg p-3 rounded-[10px] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 t-tip" data-tip="<strong class='text-brand-light block'>Gamificação de Metas:</strong> Adicione itens na sacola do cliente para ver a barra se mover e a sua comissão aumentar em tempo real!">
                         <div class="flex items-center w-full md:w-1/2">
@@ -478,11 +469,7 @@
     function addSacola(valor) {
         carrinhoTotal += valor;
         document.getElementById('sacola-total').innerText = `R$ ${carrinhoTotal.toFixed(2).replace('.', ',')}`;
-        
-        // Efeito Sonoro de Dinheiro
         SoundEngine.playCoin();
-
-        // Atualização Dinâmica do Dashboard Estratégico (Gamificação V8)
         vendasAtuais += valor;
         let faltam = metaDiaria - vendasAtuais;
         if(faltam < 0) faltam = 0;
@@ -494,7 +481,6 @@
         document.getElementById('progress-bar').style.width = `${pct}%`;
         document.getElementById('comissao-text').innerText = `R$ ${(vendasAtuais * 0.08).toFixed(2).replace('.', ',')}`;
 
-        // Efeito visual no banner
         const banner = document.getElementById('vendedor-banner');
         banner.classList.add('scale-[1.01]', 'shadow-[0_0_30px_rgba(59,130,246,0.8)]');
         setTimeout(() => banner.classList.remove('scale-[1.01]', 'shadow-[0_0_30px_rgba(59,130,246,0.8)]'), 300);
@@ -607,12 +593,88 @@
         document.getElementById('chat-messages').innerHTML += `<div class="flex justify-start mb-2 fade-in"><div class="bg-[#202c33] text-[#e9edef] p-2.5 rounded-lg max-w-[85%] shadow-sm border border-gray-700 rounded-tl-none"><p class="text-[12px] leading-relaxed break-words">${text}</p><span class="text-[9px] text-gray-400 flex justify-end mt-1">${time}</span></div></div>`;
     }
 
-
     /* ================================================================================= */
-    /* OUTROS MÓDULOS (Líder, Analista, CEO mantidos abreviados para foco)               */
+    /* MÓDULO: COORDENADOR (Líder / Floor Manager) - Atualizado com Indicadores          */
     /* ================================================================================= */
     function renderLiderEquipe(container) {
-        container.innerHTML = `<div class="fade-in h-full flex flex-col gap-4"><div class="bg-gradient-to-r from-red-900/50 to-transparent p-4 rounded-xl border-l-4 border-red-500 shadow-lg flex flex-col md:flex-row items-center justify-between gap-3"><div><h4 class="text-white font-bold text-sm"><i class="fa-solid fa-triangle-exclamation text-yellow-400 mr-2"></i> Gargalo Operacional</h4><p class="text-xs text-gray-300">3 operadores ociosos há 15m. Risco de churn.</p></div><button class="bg-red-600 text-white px-4 py-2 rounded text-xs font-bold hover:bg-red-500" onclick="showToast('Alerta enviado!', 'warning')">Acordar Equipe</button></div><div class="grid grid-cols-2 md:grid-cols-4 gap-4 shrink-0"><div class="glass-panel p-4 rounded-xl border-l-4 border-brand"><p class="text-[10px] text-gray-400 font-bold uppercase">Vendas Equipe</p><h3 class="text-xl font-bold text-white">R$ 22.450</h3></div><div class="glass-panel p-4 rounded-xl border-l-4 border-yellow-500"><p class="text-[10px] text-gray-400 font-bold uppercase">Espera (TME)</p><h3 class="text-xl font-bold text-yellow-500">00:04:12</h3></div></div><div class="glass-panel p-3 rounded-xl flex justify-between items-center bg-[#111b21]"><div class="flex gap-2"><button class="bg-[#2a3942] hover:bg-white hover:text-black text-gray-300 border border-gray-600 text-xs px-3 py-1.5 rounded" onclick="document.getElementById('podium-modal').classList.remove('hidden')"><i class="fa-solid fa-trophy text-gold mr-1"></i> Modo TV Ranking</button></div></div><div class="flex-1 glass-panel rounded-xl overflow-auto"><table class="w-full text-left text-sm whitespace-nowrap"><thead class="bg-black text-gray-400 text-xs uppercase"><tr><th class="p-4">Vendedor</th><th class="p-4">Status</th><th class="p-4">Vendas</th><th class="p-4">TMA</th></tr></thead><tbody id="team-table-body" class="divide-y divide-gray-800 text-sm"></tbody></table></div></div>`;
+        container.innerHTML = `
+        <div class="fade-in h-full flex flex-col gap-4 overflow-y-auto custom-scrollbar pb-4">
+            
+            <div class="bg-gradient-to-r from-red-900/50 to-transparent p-4 rounded-xl border-l-4 border-red-500 shadow-lg flex flex-col md:flex-row items-center justify-between gap-3 shrink-0">
+                <div>
+                    <h4 class="text-white font-bold text-sm"><i class="fa-solid fa-triangle-exclamation text-yellow-400 mr-2"></i> Gargalo Operacional</h4>
+                    <p class="text-xs text-gray-300">3 operadores ociosos há 15m. Risco de churn.</p>
+                </div>
+                <button class="bg-red-600 text-white px-4 py-2 rounded text-xs font-bold hover:bg-red-500" onclick="showToast('Alerta enviado!', 'warning')">Acordar Equipe</button>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 shrink-0">
+                
+                <div class="glass-panel p-3 rounded-xl border-l-4 border-brand col-span-2 md:col-span-2 lg:col-span-1">
+                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Meta Geral (Mês)</p>
+                    <h3 class="text-lg font-black text-white">R$ 150.000 <span class="text-xs text-green-400 font-bold ml-1">(68%)</span></h3>
+                    <div class="w-full bg-gray-800 rounded-full h-1 mt-2 mb-1"><div class="bg-brand h-1 rounded-full" style="width: 68%"></div></div>
+                    <p class="text-[9px] text-gray-500">Alcançado: R$ 102.000 (342 qtd)</p>
+                </div>
+                
+                <div class="glass-panel p-3 rounded-xl border border-gray-800">
+                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Base / Novos Clientes</p>
+                    <h3 class="text-lg font-bold text-white">8.450 <span class="text-xs text-brand-light bg-brand/20 px-1 py-0.5 rounded ml-1">+45 hoje</span></h3>
+                    <p class="text-[9px] text-gray-500 mt-2">Ativação Média Alta</p>
+                </div>
+                
+                <div class="glass-panel p-3 rounded-xl border border-gray-800">
+                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Recup. / Inadimplentes</p>
+                    <h3 class="text-lg font-bold text-green-400">12 <span class="text-sm text-gray-500 mx-1">|</span> <span class="text-red-400">14%</span></h3>
+                    <p class="text-[9px] text-gray-500 mt-2">Clientes Salvos vs Risco</p>
+                </div>
+
+                <div class="glass-panel p-3 rounded-xl border border-gray-800">
+                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Cancelados / Cessados</p>
+                    <h3 class="text-lg font-bold text-red-500">28 <span class="text-xs text-gray-400 font-normal">/ 5 ciclo</span></h3>
+                    <p class="text-[9px] text-gray-500 mt-2">Cessados por Ciclo</p>
+                </div>
+
+                <div class="glass-panel p-3 rounded-xl border border-gray-800 col-span-2 md:col-span-4 lg:col-span-1">
+                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Up-sell & Mix</p>
+                    <div class="flex justify-between items-end mt-1">
+                        <div>
+                            <p class="text-[9px] text-gray-500 mb-0.5">Intenção Revenda</p>
+                            <h3 class="text-sm font-bold text-gold">22%</h3>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[9px] text-gray-500 mb-0.5">Multimarcas</p>
+                            <h3 class="text-sm font-bold text-purple-400">156 ativas</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="glass-panel p-3 rounded-xl flex justify-between items-center bg-[#111b21] shrink-0">
+                <div class="flex gap-2">
+                    <button class="bg-[#2a3942] hover:bg-white hover:text-black text-gray-300 border border-gray-600 text-xs px-3 py-1.5 rounded transition-colors" onclick="document.getElementById('podium-modal').classList.remove('hidden')">
+                        <i class="fa-solid fa-trophy text-gold mr-1"></i> Modo TV Ranking
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex-1 glass-panel rounded-xl overflow-auto custom-scrollbar">
+                <table class="w-full text-left text-sm whitespace-nowrap relative">
+                    <thead class="bg-black text-gray-400 text-xs uppercase sticky top-0 z-10">
+                        <tr>
+                            <th class="p-4 border-b border-gray-800">Vendedor</th>
+                            <th class="p-4 border-b border-gray-800">Status</th>
+                            <th class="p-4 border-b border-gray-800">Vendas</th>
+                            <th class="p-4 border-b border-gray-800">TMA</th>
+                        </tr>
+                    </thead>
+                    <tbody id="team-table-body" class="divide-y divide-gray-800 text-sm"></tbody>
+                </table>
+            </div>
+        </div>
+        `;
+        
         let tbody = document.getElementById('team-table-body');
         teamDatabase.forEach(user => {
             let statusColor = user.status === 'Ocioso' ? 'text-red-400 bg-red-900/30' : (user.status === 'Pausa' ? 'text-yellow-500 bg-yellow-900/30' : 'text-green-400 bg-green-900/30');
@@ -620,6 +682,9 @@
         });
     }
 
+    /* ================================================================================= */
+    /* OUTROS MÓDULOS (Analista, CEO)                                                    */
+    /* ================================================================================= */
     function renderAnalistaImportacao(container) { container.innerHTML = `<div class="fade-in max-w-4xl mx-auto py-6"><div class="bg-gradient-to-r from-purple-900/50 to-transparent p-4 rounded-xl border-l-4 border-purple-500 flex justify-between items-center mb-6"><div><h4 class="text-white font-bold"><i class="fa-solid fa-broom text-purple-400 mr-2"></i> Qualidade de Dados</h4><p class="text-xs text-gray-300">14% de CPFs inválidos. Limpeza recomendada.</p></div><button class="bg-purple-600 text-white px-4 py-2 rounded text-xs font-bold hover:bg-purple-500" onclick="showToast('Higienização iniciada.', 'success')">Limpar Base</button></div><div class="glass-panel p-8 rounded-xl border border-purple-900/30 text-center cursor-pointer hover:bg-purple-900/5 transition-colors" onclick="showToast('Upload de CSV bloqueado na versão demo.', 'warning')"><i class="fa-solid fa-file-csv text-6xl text-gray-500 mb-4"></i><h3 class="text-xl font-bold text-white">Upload Base (.CSV)</h3></div></div>`; }
 
     function renderGerenteDashboard(container) { container.innerHTML = `<div class="fade-in space-y-6 pb-6"><div class="bg-gradient-to-r from-red-900/40 to-transparent p-4 rounded-xl border-l-4 border-red-500 flex justify-between items-center"><div><h4 class="text-white font-bold"><i class="fa-solid fa-chart-line text-red-400 mr-2"></i> Alerta de Rentabilidade (C.A.C.)</h4><p class="text-xs text-gray-300">O Custo de Aquisição subiu 12% nas últimas 4 horas.</p></div><button class="bg-dark-bg border border-gray-600 text-white px-4 py-2 rounded text-xs font-bold" onclick="showToast('Campanhas ruins pausadas no Meta Ads.', 'success')">Pausar Campanhas</button></div><div class="grid grid-cols-2 md:grid-cols-4 gap-4"><div class="glass-panel p-4 rounded-xl border border-gray-700"><p class="text-[9px] text-gray-400 font-bold uppercase">Receita Mensal</p><h3 class="text-xl font-black text-white">R$ 412k</h3></div><div class="glass-panel p-4 rounded-xl border border-gray-700"><p class="text-[9px] text-gray-400 font-bold uppercase">CAC Atual</p><h3 class="text-xl font-black text-red-400">R$ 38,50</h3></div></div><div class="glass-panel p-5 rounded-xl border-l-4 border-green-500 bg-[#111b21]"><h3 class="font-bold text-white text-sm mb-4"><i class="fa-solid fa-calculator text-green-400 mr-2"></i> Simulador de Cenários</h3><div class="flex gap-6 items-center"><div class="w-1/2"><div class="flex justify-between text-xs text-gray-300 mb-2"><span>Reduzir CAC Meta Ads</span> <span class="font-bold text-white">R$ 30,00</span></div><input type="range" min="15" max="50" step="0.5" value="30" class="w-full"></div><div class="w-1/2 bg-gray-900 p-4 rounded-lg text-center"><p class="text-[10px] uppercase text-gray-400 font-bold mb-1">Novo Lucro Mensal Projetado</p><h2 class="text-3xl font-black text-green-400">R$ 137.900</h2></div></div></div></div>`; }
@@ -634,7 +699,6 @@
             <div class="fade-in space-y-6 pb-6 relative overflow-hidden h-full flex flex-col">
                 <div class="scanline"></div>
                 
-                <!-- PAINEL ESTRATÉGICO SECOPS (Dest) -->
                 <div class="bg-gradient-to-r from-terminal-green/20 to-transparent p-0.5 rounded-xl border-l-4 border-terminal-green transition-all duration-300" id="secops-banner">
                     <div class="bg-[#0c0c0c] p-4 rounded-[10px] flex flex-col md:flex-row items-center justify-between gap-4">
                         <div class="flex items-center">
